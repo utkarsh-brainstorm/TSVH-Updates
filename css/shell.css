@@ -872,16 +872,30 @@ html.erp-modern-active #chatbot-launcher { display: none !important; }
   border-bottom-color:rgba(203,213,225,.7); background:rgba(249,250,252,.78); backdrop-filter:blur(16px);
 }
 #erp-modern-shell .erp-search-wrap {
+  position: relative;
   width: min(760px, 100%);
-  padding: 2px !important;
+  padding: 1.5px !important;
   border-radius: 14px !important;
-  background: linear-gradient(135deg, #4285f4 0%, #9b72cb 35%, #d96570 70%, #f4b400 100%) !important;
-  box-shadow: 0 4px 15px rgba(66, 133, 244, .12);
-  transition: transform .22s cubic-bezier(.2,0,0,1), box-shadow .22s ease;
+  background: #d8dee8 !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, .05);
+  transition: transform .22s cubic-bezier(.2,0,0,1), box-shadow .22s ease, background-color .22s ease;
   box-sizing: border-box !important;
 }
-#erp-modern-shell .erp-search-wrap:hover { transform: translateY(-1px); filter: saturate(1.12); box-shadow: 0 7px 20px rgba(66, 133, 244, .15); }
-#erp-modern-shell .erp-search-wrap:focus-within { box-shadow: 0 0 0 2px rgba(66, 133, 244, .25), 0 8px 23px rgba(66, 133, 244, .18); }
+#erp-modern-shell .erp-search-wrap:hover {
+  transform: translateY(-1px);
+  background: #cbd5e1 !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, .08);
+}
+#erp-modern-shell .erp-search-wrap:focus-within,
+#erp-modern-shell .erp-search-wrap.is-searching {
+  transform: translateY(-1px);
+  background: #2563eb !important;
+  box-shadow: 0 0 0 3.5px rgba(37, 99, 235, .2), 0 8px 24px rgba(37, 99, 235, .12) !important;
+}
+#erp-modern-shell .erp-search-wrap:focus-within .erp-search-icon,
+#erp-modern-shell .erp-search-wrap.is-searching .erp-search-icon {
+  color: #2563eb !important;
+}
 #erp-modern-shell .erp-global-search {
   height: 50px;
   overflow: hidden !important;
@@ -1036,12 +1050,28 @@ html.erp-modern-active #chatbot-launcher { display: none !important; }
 #erp-modern-shell[data-theme="dark"] #erp-more-filter:focus { border-color:#777; box-shadow:0 0 0 3px rgba(255,255,255,.07); }
 #erp-modern-shell[data-theme="dark"] .erp-more-links a { border-color:#292929; color:#d0d0d0; }
 #erp-modern-shell[data-theme="dark"] .erp-more-links a:hover { background:#1b1b1b; color:#fff; }
-#erp-modern-shell[data-theme="dark"] .erp-searchbar-row { border-color:#282828; background:#080808; }
-#erp-modern-shell[data-theme="dark"] .erp-search-wrap:hover { box-shadow:0 7px 20px rgba(0,0,0,.65); }
-#erp-modern-shell[data-theme="dark"] .erp-search-wrap:focus-within { box-shadow:0 0 0 2px rgba(255,255,255,.09),0 8px 22px rgba(0,0,0,.7); }
+#erp-modern-shell[data-theme="dark"] .erp-searchbar-row { border-color:#242428; background:#080808; }
+#erp-modern-shell[data-theme="dark"] .erp-search-wrap {
+  background: #333338 !important; /* Elegant subtle Greyish boundary on black */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .45) !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-search-wrap:hover {
+  background: #44444c !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .65) !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-search-wrap:focus-within,
+#erp-modern-shell[data-theme="dark"] .erp-search-wrap.is-searching {
+  transform: translateY(-1px);
+  background: #3b82f6 !important;
+  box-shadow: 0 0 0 3.5px rgba(59, 130, 246, .28), 0 8px 24px rgba(29, 78, 216, .22) !important; /* Minimal blue shade glow outside */
+}
+#erp-modern-shell[data-theme="dark"] .erp-search-wrap:focus-within .erp-search-icon,
+#erp-modern-shell[data-theme="dark"] .erp-search-wrap.is-searching .erp-search-icon {
+  color: #60a5fa !important;
+}
 #erp-modern-shell[data-theme="dark"] .erp-global-search {
   border-color: transparent !important;
-  background: #151515 !important;
+  background: #141417 !important;
   box-shadow: none !important;
 }
 #erp-modern-shell[data-theme="dark"] .erp-global-search:focus-within {
@@ -1049,7 +1079,8 @@ html.erp-modern-active #chatbot-launcher { display: none !important; }
   box-shadow: none !important;
 }
 #erp-modern-shell[data-theme="dark"] .erp-search-icon {
-  color: #a0a0a0 !important;
+  color: #8b8b93 !important;
+  transition: color .2s ease;
 }
 #erp-modern-shell[data-theme="dark"] #erp-search-by {
   background: transparent !important;
@@ -2007,16 +2038,16 @@ html.erp-modern-active :is(#ui-datepicker-div,.ui-datepicker,.datepicker,.datepi
   max-height: 280px !important;
   overflow-y: auto !important;
   background: #ffffff !important;
-  border: 1.5px solid #2563eb !important;
+  border: 1px solid #d1d5db !important;
   border-radius: 8px !important;
-  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.18) !important;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(59, 130, 246, 0.15) !important;
   z-index: 9999 !important;
 }
 
 #erp-modern-shell[data-theme="dark"] #search_suggest {
   background: #18181b !important;
-  border-color: #3b82f6 !important;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6) !important;
+  border: 1px solid #333338 !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(59, 130, 246, 0.2) !important;
 }
 
 .suggest_link {

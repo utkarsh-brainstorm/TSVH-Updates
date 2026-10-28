@@ -1,18 +1,18 @@
 {
-  "version": 4,
-  "versionName": "1.0.4",
+  "version": 5,
+  "versionName": "1.0.5",
   "releaseDate": "2026-10-28",
-  "description": "Stable production bundle (test popup removed)",
+  "description": "Update search bar border to sleek greyish on black with minimal blue glow outside",
   "files": [
     {
       "path": "js/bundle.js",
       "url": "js/bundle.js",
-      "sha256": "8087b524ce303f1acd4e88c0149fbec384c638be5e6385af1d06f81a78393e74"
+      "sha256": "feb68902485a02ad291e814d4dc6c2500f8d0af50112b2906312b5f037813d80"
     },
     {
       "path": "css/shell.css",
       "url": "css/shell.css",
-      "sha256": "3a270efb208d736d9f178bf29f574d525a9e88af82896712b64f68807cd10b29"
+      "sha256": "475e812c8b1e58399b35eb7eb9d68fa224ee2fd34b70de73771d480e42359c4d"
     }
   ],
   "apk": {

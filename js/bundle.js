@@ -751,6 +751,7 @@
   const input = app.searchInput;
   const searchBy = app.searchBy;
   const results = app.searchResults;
+  const searchWrap = app.root?.querySelector('.erp-search-wrap');
   const cache = new Map();
   let debounceTimer = 0;
   let requestVersion = 0;
@@ -758,6 +759,11 @@
   let currentItems = [];
   let activeController = null;
   let intendedAction = app.page === 'dashboard' ? 'dashboard' : 'edit';
+
+  function updateSearchingState() {
+    const wrap = searchWrap || app.root?.querySelector('.erp-search-wrap');
+    if (wrap) wrap.classList.toggle('is-searching', (input.value || '').trim().length > 0);
+  }
 
   function setStatus(message, loading = false) {
     results.replaceChildren();
@@ -1043,6 +1049,7 @@
   }
 
   input.addEventListener('input', () => {
+    updateSearchingState();
     window.clearTimeout(debounceTimer);
     activeController?.abort();
     activeController = null;
@@ -1055,6 +1062,12 @@
     }
     setStatus('Waiting for the ERP…', true);
     debounceTimer = window.setTimeout(() => search(query, version), 240);
+  });
+  input.addEventListener('blur', () => {
+    if (!(input.value || '').trim()) {
+      const wrap = searchWrap || app.root?.querySelector('.erp-search-wrap');
+      if (wrap) wrap.classList.remove('is-searching');
+    }
   });
   searchBy.addEventListener('change', () => {
     if (input.value.trim().length >= 2) input.dispatchEvent(new Event('input', { bubbles: true }));

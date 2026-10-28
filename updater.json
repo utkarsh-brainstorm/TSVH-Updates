@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "versionName": "1.0.2",
+  "releaseDate": "2026-10-28",
+  "description": "Popup test: yooo Its working buddy",
+  "files": [
+    {
+      "path": "js/bundle.js",
+      "url": "js/bundle.js",
+      "sha256": "1ee3d2a33dbf07632242bda2ef81591839643f7fbe248a2024a058f6132d6f27"
+    },
+    {
+      "path": "css/shell.css",
+      "url": "css/shell.css",
+      "sha256": "3a270efb208d736d9f178bf29f574d525a9e88af82896712b64f68807cd10b29"
+    }
+  ],
+  "apk": {
+    "versionCode": 1,
+    "versionName": "1.0.0",
+    "url": "https://github.com/utkarsh-brainstorm/TSVH/releases/download/v1.0-beta/TSVH_ERP.apk",
+    "changelog": "Initial release"
+  }
+}

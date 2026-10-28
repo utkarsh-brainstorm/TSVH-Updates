@@ -1,0 +1,2899 @@
+/* Safe ERP wrapper hiding - NEVER hide body itself to avoid white screens */
+html.erp-modern-pending #body-wrapper,
+html.erp-modern-active #body-wrapper {
+  display: none !important;
+}
+html.erp-modern-pending body > *:not(#erp-modern-shell):not(.erp-floating-submit-bar),
+html.erp-modern-active body > *:not(#erp-modern-shell):not(.erp-floating-submit-bar):not(#erp-extension-toggle-floating):not(.tcal):not(#CalendarControl):not(#ui-datepicker-div) {
+  display: none !important;
+}
+html, body {
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: #09090b !important;
+  visibility: visible !important;
+}
+
+#erp-modern-shell,
+#erp-modern-shell * { box-sizing: border-box; }
+#erp-modern-shell {
+  --erp-ink: #182335;
+  --erp-muted: #68778d;
+  --erp-line: #e1e7ef;
+  --erp-bg: #f4f7fb;
+  --erp-blue: #315fba;
+  --erp-blue-dark: #244e9f;
+  --erp-green: #237a5a;
+  --erp-shadow: 0 8px 26px rgba(25, 44, 73, .08);
+  position: relative;
+  z-index: 2147480000;
+  display: block;
+  min-height: 100vh;
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  background: var(--erp-bg);
+  color: var(--erp-ink);
+  font: 14px/1.45 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  visibility: visible !important;
+}
+#erp-modern-shell button,
+#erp-modern-shell input { font: inherit; }
+#erp-modern-shell button { cursor: pointer; }
+#erp-modern-shell a { color: inherit; }
+#erp-modern-shell .erp-boot-skeleton { position: fixed; inset: 0; z-index: 3; overflow: auto; background: var(--erp-bg); padding: 0 max(24px, calc((100vw - 1420px) / 2)) 35px; }
+#erp-modern-shell:not(:has(.erp-app-frame)) .erp-boot-skeleton { display: block; }
+#erp-modern-shell:has(.erp-app-frame) > .erp-boot-skeleton { display: none; }
+#erp-modern-shell .erp-skeleton-topbar { display: flex; align-items: center; gap: 20px; height: 66px; border-bottom: 1px solid var(--erp-line); background: #fff; }
+#erp-modern-shell .erp-skeleton-topbar i { width: 34px; height: 34px; border-radius: 8px; background: #e8edf5; }
+#erp-modern-shell .erp-skeleton-topbar span { width: 72px; height: 9px; border-radius: 5px; background: #e9edf3; }
+#erp-modern-shell .erp-skeleton-topbar b { width: 50px; height: 28px; margin-left: auto; border: 1px solid var(--erp-line); border-radius: 6px; }
+#erp-modern-shell .erp-skeleton-search { display: flex; align-items: center; gap: 12px; height: 68px; border-bottom: 1px solid var(--erp-line); background: #fbfcfe; }
+#erp-modern-shell .erp-skeleton-search span { width: min(620px, 60vw); height: 42px; border: 1px solid var(--erp-line); border-radius: 7px; background: #fff; }
+#erp-modern-shell .erp-skeleton-search i { width: 14px; height: 14px; margin-left: 13px; border-radius: 50%; background: #e4e9f1; }
+#erp-modern-shell .erp-skeleton-search small { width: 190px; height: 8px; border-radius: 5px; background: #e9edf3; }
+#erp-modern-shell .erp-skeleton-heading { display: grid; gap: 8px; margin: 28px 0 17px; }
+#erp-modern-shell .erp-skeleton-heading i { width: 220px; height: 23px; border-radius: 5px; background: #e6ebf2; }
+#erp-modern-shell .erp-skeleton-heading small { width: 100px; height: 8px; border-radius: 5px; background: #edf0f5; }
+#erp-modern-shell .erp-skeleton-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; max-width: 1100px; }
+#erp-modern-shell .erp-skeleton-grid i { display: grid; grid-template-columns: 36px 1fr; align-content: center; gap: 8px 12px; min-height: 90px; padding: 16px; border: 1px solid var(--erp-line); border-radius: 8px; background: #fff; }
+#erp-modern-shell .erp-skeleton-grid b { grid-row: span 2; width: 36px; height: 36px; border-radius: 7px; background: #edf1f7; }
+#erp-modern-shell .erp-skeleton-grid span { width: 68%; height: 10px; margin-top: 3px; border-radius: 5px; background: #e8edf3; }
+#erp-modern-shell .erp-skeleton-grid small { width: 90%; height: 8px; border-radius: 5px; background: #f0f2f6; }
+#erp-modern-shell .erp-skeleton-card { height: 140px; max-width: 1100px; margin-top: 23px; border: 1px solid var(--erp-line); border-radius: 8px; background: #fff; }
+#erp-modern-shell .erp-app-frame { min-height: 100vh; }
+#erp-modern-shell .erp-topbar {
+  position: relative;
+  z-index: 5;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 8px max(14px, calc((100vw - 1420px) / 2)) 4px !important;
+  background: #fff;
+  border-bottom: 1px solid var(--erp-line);
+  gap: 6px !important;
+  min-height: auto !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-topbar {
+  background: #09090b !important;
+  border-bottom-color: #27272a !important;
+}
+#erp-modern-shell .erp-brand-row {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+#erp-modern-shell .erp-brand {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  width: 100% !important;
+  text-decoration: none !important;
+}
+#erp-modern-shell .erp-brand-mark {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 60px !important;
+  height: 60px !important;
+  min-width: 60px !important;
+  min-height: 60px !important;
+  border-radius: 12px !important;
+  background: transparent !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
+}
+#erp-modern-shell .erp-brand-mark img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+#erp-modern-shell .erp-brand-copy {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  min-width: 0 !important;
+  flex: 1 !important;
+  gap: 2px !important;
+}
+#erp-modern-shell .erp-school-title {
+  font-size: clamp(12.5px, 3.8vw, 15px) !important;
+  font-weight: 850 !important;
+  color: var(--erp-ink) !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.25 !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow: visible !important;
+  display: block !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-school-title {
+  color: #f4f4f5 !important;
+}
+#erp-modern-shell .erp-school-sub-row {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  font-size: 11px !important;
+  color: var(--erp-muted) !important;
+  font-weight: 600 !important;
+  margin-top: 2px !important;
+}
+#erp-modern-shell .erp-school-city {
+  color: var(--erp-muted) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+}
+#erp-modern-shell .erp-sub-divider {
+  color: #94a3b8 !important;
+  font-size: 10px !important;
+}
+#erp-modern-shell .erp-header-role-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  padding: 2px 8px !important;
+  border-radius: 6px !important;
+  font-size: 10.5px !important;
+  font-weight: 800 !important;
+  line-height: 1.3 !important;
+  white-space: nowrap !important;
+  letter-spacing: 0.03em !important;
+}
+#erp-modern-shell .erp-header-role-badge.badge-admin {
+  background: #fef3c7 !important;
+  color: #b45309 !important;
+  border: 1px solid #fde68a !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-header-role-badge.badge-admin {
+  background: #451a03 !important;
+  color: #fcd34d !important;
+  border-color: #78350f !important;
+}
+#erp-modern-shell .erp-header-role-badge.badge-user {
+  background: #e0f2fe !important;
+  color: #0369a1 !important;
+  border: 1px solid #bae6fd !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-header-role-badge.badge-user {
+  background: #082f49 !important;
+  color: #7dd3fc !important;
+  border-color: #0c4a6e !important;
+}
+#erp-modern-shell .erp-header-role-badge.badge-class {
+  background: #ecfdf5 !important;
+  color: #047857 !important;
+  border: 1px solid #a7f3d0 !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-header-role-badge.badge-class {
+  background: #064e3b !important;
+  color: #6ee7b7 !important;
+  border-color: #047857 !important;
+}
+
+#erp-modern-shell .erp-nav-row {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: 40px !important;
+  padding: 2px 0 0 !important;
+}
+
+#erp-modern-shell .erp-nav-row {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: 42px !important;
+  padding: 2px 0 0 !important;
+  box-sizing: border-box !important;
+}
+
+#erp-modern-shell .erp-admin-nav-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  min-height: 42px !important;
+  gap: 8px !important;
+  box-sizing: border-box !important;
+}
+
+#erp-modern-shell .erp-user-nav-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  width: 100% !important;
+  min-height: 42px !important;
+  box-sizing: border-box !important;
+}
+
+#erp-modern-shell .erp-user-nav-row .erp-nav-left {
+  flex-shrink: 0 !important;
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+}
+
+#erp-modern-shell .erp-user-nav-row .erp-nav-center {
+  flex: 1 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+#erp-modern-shell .erp-user-nav-row .erp-nav-right {
+  flex-shrink: 0 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+}
+
+#erp-modern-shell .erp-class-square-box {
+  min-width: 44px !important;
+  width: auto !important;
+  height: 38px !important;
+  padding: 0 10px !important;
+  border-radius: 10px !important;
+  border: 1.5px solid var(--erp-line) !important;
+  background: #ffffff !important;
+  color: var(--erp-blue) !important;
+  font-weight: 850 !important;
+  font-size: 13px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  text-transform: none !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  box-sizing: border-box !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-class-square-box {
+  background: #18181b !important;
+  border-color: #27272a !important;
+  color: #60a5fa !important;
+}
+
+#erp-modern-shell .erp-user-nav-row .erp-primary-nav {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 40px !important;
+  gap: 6px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+#erp-modern-shell .erp-user-nav-row .erp-nav-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 38px !important;
+  padding: 0 16px !important;
+  border-radius: 999px !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  color: var(--erp-muted) !important;
+  border: 1px solid transparent !important;
+  transition: all 0.15s ease !important;
+  box-sizing: border-box !important;
+}
+
+#erp-modern-shell .erp-user-nav-row .erp-nav-item:hover {
+  color: var(--erp-ink) !important;
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+
+#erp-modern-shell .erp-user-nav-row .erp-nav-item.active {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3) !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-user-nav-row .erp-nav-item {
+  color: #a1a1aa !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-user-nav-row .erp-nav-item:hover {
+  color: #f4f4f5 !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-user-nav-row .erp-nav-item.active {
+  background: #3b82f6 !important;
+  color: #ffffff !important;
+}
+
+#erp-modern-shell .erp-user-nav-row .erp-theme-toggle {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 10px !important;
+  border: 1.5px solid var(--erp-line) !important;
+  background: #ffffff !important;
+  color: var(--erp-ink) !important;
+  font-size: 16px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  margin: 0 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  box-sizing: border-box !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-user-nav-row .erp-theme-toggle {
+  background: #18181b !important;
+  border-color: #27272a !important;
+  color: #f4f4f5 !important;
+}
+
+/* Tab Dropdown for Admin Panel (placed on the LEFT) */
+#erp-modern-shell .erp-tab-dropdown-wrap {
+  position: relative !important;
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+}
+
+#erp-modern-shell .erp-tab-dropdown-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  padding: 0 16px !important;
+  border-radius: 10px !important;
+  border: 1.5px solid var(--erp-line) !important;
+  background: #ffffff !important;
+  color: var(--erp-ink) !important;
+  font-size: 13.5px !important;
+  font-weight: 750 !important;
+  cursor: pointer !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.15s ease !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-tab-dropdown-btn {
+  background: #18181b !important;
+  border-color: #27272a !important;
+  color: #f4f4f5 !important;
+}
+
+#erp-modern-shell .erp-tab-dropdown-btn:hover,
+#erp-modern-shell .erp-tab-dropdown-btn[aria-expanded="true"] {
+  border-color: var(--erp-blue) !important;
+  color: var(--erp-blue) !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-tab-dropdown-btn:hover,
+#erp-modern-shell[data-theme="dark"] .erp-tab-dropdown-btn[aria-expanded="true"] {
+  border-color: #3b82f6 !important;
+  color: #60a5fa !important;
+}
+
+#erp-modern-shell .erp-tab-dropdown-arrow {
+  font-size: 11px !important;
+  opacity: 0.7 !important;
+  transition: transform 0.15s ease !important;
+}
+
+#erp-modern-shell .erp-tab-dropdown-btn[aria-expanded="true"] .erp-tab-dropdown-arrow {
+  transform: rotate(180deg) !important;
+}
+
+#erp-modern-shell .erp-tab-dropdown-menu {
+  position: absolute !important;
+  top: calc(100% + 6px) !important;
+  left: 0 !important;
+  z-index: 2147483647 !important;
+  min-width: 180px !important;
+  padding: 6px !important;
+  background: #ffffff !important;
+  border: 1px solid var(--erp-line) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 3px !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-tab-dropdown-menu {
+  background: #18181b !important;
+  border-color: #27272a !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+}
+
+#erp-modern-shell .erp-tab-dropdown-menu[hidden] {
+  display: none !important;
+}
+
+#erp-modern-shell .erp-tab-item {
+  display: flex !important;
+  align-items: center !important;
+  padding: 9px 14px !important;
+  font-size: 13.5px !important;
+  font-weight: 650 !important;
+  color: var(--erp-ink) !important;
+  text-decoration: none !important;
+  border-radius: 8px !important;
+  transition: all 0.12s ease !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-tab-item {
+  color: #e4e4e7 !important;
+}
+
+#erp-modern-shell .erp-tab-item:hover,
+#erp-modern-shell .erp-tab-item.active {
+  background: #eff6ff !important;
+  color: var(--erp-blue) !important;
+  font-weight: 750 !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-tab-item:hover,
+#erp-modern-shell[data-theme="dark"] .erp-tab-item.active {
+  background: #1e293b !important;
+  color: #60a5fa !important;
+}
+
+/* User Mode Primary Nav Tabs */
+#erp-modern-shell .erp-primary-nav {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  flex: 0 0 auto !important;
+}
+
+#erp-modern-shell .erp-nav-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 8px 16px !important;
+  min-height: 38px !important;
+  border-radius: 999px !important;
+  border: 1px solid var(--erp-line) !important;
+  background: #ffffff !important;
+  color: var(--erp-ink) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+  transition: all 0.15s ease !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-nav-item {
+  background: #18181b !important;
+  border-color: #27272a !important;
+  color: #f4f4f5 !important;
+}
+#erp-modern-shell .erp-nav-item:hover,
+#erp-modern-shell .erp-nav-item.active {
+  background: var(--erp-blue) !important;
+  border-color: var(--erp-blue) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 6px rgba(49, 95, 186, 0.35) !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-nav-item:hover,
+#erp-modern-shell[data-theme="dark"] .erp-nav-item.active {
+  background: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+#erp-modern-shell .erp-nav-item .erp-nav-label {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+}
+
+/* Nav Right Actions (More + Dark Mode side by side on RIGHT) */
+#erp-modern-shell .erp-nav-right-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex: 0 0 auto !important;
+  margin-left: auto !important;
+}
+
+#erp-modern-shell .erp-more-wrap {
+  position: relative !important;
+  display: inline-flex !important;
+  flex-shrink: 0 !important;
+}
+
+#erp-modern-shell .erp-more-button {
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  padding: 0 14px !important;
+  border-radius: 10px !important;
+  border: 1.5px solid var(--erp-line) !important;
+  background: #ffffff !important;
+  color: var(--erp-ink) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.15s ease !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-more-button {
+  background: #18181b !important;
+  border-color: #27272a !important;
+  color: #f4f4f5 !important;
+}
+#erp-modern-shell .erp-more-button:hover,
+#erp-modern-shell .erp-more-button[aria-expanded="true"] {
+  border-color: var(--erp-blue) !important;
+  color: var(--erp-blue) !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-more-button:hover,
+#erp-modern-shell[data-theme="dark"] .erp-more-button[aria-expanded="true"] {
+  border-color: #3b82f6 !important;
+  color: #60a5fa !important;
+}
+#erp-modern-shell .erp-more-caret {
+  font-size: 10px !important;
+  opacity: 0.7 !important;
+}
+
+#erp-modern-shell .erp-more-panel {
+  position: absolute !important;
+  top: calc(100% + 6px) !important;
+  right: 0 !important;
+  z-index: 2147483647 !important;
+  width: min(320px, calc(100vw - 32px)) !important;
+  max-height: min(75vh, 520px) !important;
+  padding: 12px !important;
+  overflow-y: auto !important;
+  border: 1px solid var(--erp-line) !important;
+  border-radius: 12px !important;
+  background: #ffffff !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18) !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-more-panel {
+  background: #18181b !important;
+  border-color: #27272a !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+}
+#erp-modern-shell .erp-more-panel[hidden] {
+  display: none !important;
+}
+#erp-modern-shell .erp-more-header {
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  text-transform: none !important;
+  letter-spacing: 0.05em !important;
+  color: #94a3b8 !important;
+  margin-bottom: 8px !important;
+}
+#erp-modern-shell #erp-more-filter {
+  width: 100% !important;
+  height: 36px !important;
+  padding: 0 10px !important;
+  border-radius: 6px !important;
+  border: 1px solid var(--erp-line) !important;
+  background: #f8fafc !important;
+  color: var(--erp-ink) !important;
+  font-size: 13px !important;
+  margin-bottom: 8px !important;
+  box-sizing: border-box !important;
+}
+#erp-modern-shell[data-theme="dark"] #erp-more-filter {
+  background: #27272a !important;
+  border-color: #3f3f46 !important;
+  color: #f4f4f5 !important;
+}
+#erp-modern-shell .erp-more-links {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+#erp-modern-shell .erp-more-links a {
+  display: block !important;
+  padding: 8px 10px !important;
+  border-radius: 6px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--erp-ink) !important;
+  text-decoration: none !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+#erp-modern-shell .erp-more-links a[hidden],
+#erp-modern-shell .erp-more-links a.is-hidden {
+  display: none !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-more-links a {
+  color: #e4e4e7 !important;
+}
+#erp-modern-shell .erp-more-links a:hover {
+  background: #eff6ff !important;
+  color: #2563eb !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-more-links a:hover {
+  background: #27272a !important;
+  color: #60a5fa !important;
+}
+
+#erp-modern-shell .erp-theme-toggle {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  min-width: 40px !important;
+  border-radius: 10px !important;
+  border: 1.5px solid var(--erp-line) !important;
+  background: #ffffff !important;
+  color: var(--erp-ink) !important;
+  cursor: pointer !important;
+  font-size: 16px !important;
+  margin: 0 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  box-sizing: border-box !important;
+  transition: all 0.15s ease !important;
+}
+#erp-modern-shell .erp-theme-toggle:hover {
+  border-color: var(--erp-blue) !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-theme-toggle {
+  border-color: #27272a !important;
+  background: #18181b !important;
+  color: #f4f4f5 !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-theme-toggle:hover {
+  border-color: #3b82f6 !important;
+}
+
+#erp-modern-shell .erp-searchbar-row { position: relative; z-index: 4; display: flex; align-items: center; gap: 18px; padding: 13px max(24px, calc((100vw - 1420px) / 2)); border-bottom: 1px solid var(--erp-line); background: #fbfcfe; }
+#erp-modern-shell .erp-search-wrap { position: relative; width: min(710px, 100%); }
+#erp-modern-shell .erp-global-search { position: relative; display: flex; align-items: center; width: 100%; height: 43px; border: 1px solid #d7dfeb; border-radius: 7px; background: #fff; box-shadow: 0 1px 2px rgba(24, 35, 53, .03); }
+#erp-modern-shell .erp-global-search:focus-within { border-color: #86a5de; box-shadow: 0 0 0 3px rgba(49, 95, 186, .1); }
+#erp-modern-shell .erp-search-icon { padding-left: 13px; color: #718097; font-size: 25px; line-height: 1; transform: rotate(-15deg); }
+#erp-modern-shell #erp-search-by { height: 28px; flex: 0 0 auto; padding: 0 5px; border: 0; border-left: 1px solid #e9edf2; outline: 0; background: transparent; color: #53627a; font-size: 11px; }
+#erp-modern-shell #erp-student-search { width: 100%; min-width: 0; height: 41px; padding: 0 10px; border: 0; outline: 0; background: transparent; color: var(--erp-ink); font-size: 13px; }
+#erp-modern-shell #erp-student-search::placeholder { color: #8995a8; }
+#erp-modern-shell .erp-search-shortcut { display: flex; gap: 3px; padding-right: 10px; }
+#erp-modern-shell kbd { padding: 2px 5px; border: 1px solid #e0e5ec; border-radius: 4px; background: #f7f8fa; color: #69768a; font: 10px ui-monospace, SFMono-Regular, monospace; white-space: nowrap; }
+#erp-modern-shell .erp-search-hint { color: #78869a; font-size: 11px; }
+#erp-modern-shell .erp-search-spinner { display: none; width: 15px; height: 15px; margin-right: 12px; border: 2px solid #e0e6ef; border-top-color: var(--erp-blue); border-radius: 50%; }
+#erp-modern-shell .erp-search-spinner.erp-spinning { display: block; animation: erp-rotate .7s linear infinite; }
+@keyframes erp-rotate { to { transform: rotate(360deg); } }
+#erp-modern-shell .erp-search-results { position: absolute; top: calc(100% + 7px); left: 0; z-index: 20; width: 100%; max-height: min(56vh, 480px); overflow: auto; border: 1px solid var(--erp-line); border-radius: 8px; background: #fff; box-shadow: 0 12px 34px rgba(20, 37, 64, .15); }
+#erp-modern-shell .erp-search-results[hidden] { display: none; }
+#erp-modern-shell .erp-search-status { padding: 16px; color: var(--erp-muted); font-size: 12px; }
+#erp-modern-shell .erp-result-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 6px 9px 6px 12px; border-bottom: 1px solid #edf0f5; }
+#erp-modern-shell .erp-result-row:last-child { border-bottom: 0; }
+#erp-modern-shell .erp-result-row[aria-selected="true"],
+#erp-modern-shell .erp-result-row:hover { background: #f5f8fd; }
+#erp-modern-shell .erp-result-main { display: flex; align-items: center; min-width: 0; flex: 1; gap: 10px; padding: 7px 3px; border: 0; background: transparent; color: inherit; text-align: left; }
+#erp-modern-shell .erp-avatar { display: grid; width: 31px; height: 31px; flex: 0 0 31px; place-items: center; border-radius: 7px; background: #eaf0fc; color: #5577b9; font-size: 11px; }
+#erp-modern-shell .erp-result-copy { display: grid; min-width: 0; gap: 2px; }
+#erp-modern-shell .erp-result-copy strong { overflow: hidden; color: #24334a; font-size: 12px; font-weight: 650; text-overflow: ellipsis; white-space: nowrap; }
+#erp-modern-shell .erp-result-copy small { overflow: hidden; color: #7b8799; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+#erp-modern-shell .erp-result-enter { margin-left: auto; color: #9aa5b5; }
+#erp-modern-shell .erp-result-actions { display: flex; flex-shrink: 0; gap: 5px; }
+#erp-modern-shell .erp-action-link { padding: 6px 8px; border: 1px solid #d9e3f3; border-radius: 5px; background: #f5f8fe; color: var(--erp-blue-dark); font-size: 10px; font-weight: 600; }
+#erp-modern-shell .erp-action-link:hover { background: #eaf0fc; }
+#erp-modern-shell .erp-action-link-muted { border-color: transparent; background: transparent; color: #63728a; }
+#erp-modern-shell .erp-action-link-muted:hover { border-color: #e0e6ee; background: #fff; }
+#erp-modern-shell .erp-main { width: min(1420px, calc(100% - 48px)); margin: 0 auto; padding: 25px 0 50px; }
+#erp-modern-shell .erp-page-heading { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin: 0 0 17px; }
+#erp-modern-shell .erp-eyebrow { margin: 0 0 3px; color: #8692a3; font-size: 9px; font-weight: 750; letter-spacing: .13em; }
+#erp-modern-shell .erp-page-heading h1 { margin: 0; color: #1e2b3e; font-size: 23px; font-weight: 680; letter-spacing: -.025em; line-height: 1.25; }
+#erp-modern-shell .erp-page-context { color: #8390a2; font-size: 11px; }
+#erp-modern-shell .erp-action-area { margin-bottom: 17px; }
+#erp-modern-shell .erp-source-content { padding: 20px; border: 1px solid var(--erp-line); border-radius: 8px; background: #fff; box-shadow: 0 2px 8px rgba(25, 44, 73, .025); }
+#erp-modern-shell .erp-page-intro { margin-bottom: 16px; color: #67768b; font-size: 12px; }
+#erp-modern-shell .erp-content-skeleton { display: grid; gap: 10px; max-width: 760px; }
+#erp-modern-shell .erp-content-skeleton span { display: block; height: 15px; border-radius: 4px; background: #eff2f6; }
+#erp-modern-shell .erp-content-skeleton span:nth-child(2) { width: 81%; }
+#erp-modern-shell .erp-content-skeleton span:nth-child(3) { width: 57%; }
+#erp-modern-shell .erp-workflow-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+#erp-modern-shell .erp-workflow-card { display: flex; align-items: center; min-height: 90px; gap: 12px; padding: 16px; border: 1px solid var(--erp-line); border-radius: 8px; background: #fff; color: inherit; text-align: left; text-decoration: none; box-shadow: 0 2px 6px rgba(25, 44, 73, .025); }
+#erp-modern-shell .erp-workflow-card:hover { border-color: #b8c9e4; box-shadow: 0 5px 15px rgba(25, 44, 73, .07); }
+#erp-modern-shell .erp-workflow-icon { display: grid; width: 36px; height: 36px; flex: 0 0 36px; place-items: center; border-radius: 7px; background: #eef3fc; color: var(--erp-blue); font-size: 17px; font-weight: 700; }
+#erp-modern-shell .erp-workflow-copy { display: grid; min-width: 0; gap: 4px; }
+#erp-modern-shell .erp-workflow-copy strong { color: #26354b; font-size: 13px; font-weight: 650; }
+#erp-modern-shell .erp-workflow-copy small { color: #758399; font-size: 11px; line-height: 1.4; }
+#erp-modern-shell .erp-workflow-arrow { margin-left: auto; color: #8292a9; font-size: 14px; }
+#erp-modern-shell .erp-dashboard-source { margin-top: 18px; border: 1px solid var(--erp-line); border-radius: 7px; background: #fff; }
+#erp-modern-shell .erp-dashboard-source > summary { padding: 12px 14px; color: #58677d; cursor: pointer; font-size: 11px; font-weight: 650; list-style-position: inside; }
+#erp-modern-shell .erp-dashboard-source[open] > summary { border-bottom: 1px solid #edf0f4; }
+#erp-modern-shell .erp-dashboard-source > #main-content { padding: 0 15px 16px !important; }
+#erp-modern-shell .erp-dashboard-source #main-content > div.content-box-header:first-of-type { display: none !important; }
+
+/* Keep the original ERP controls and their forms, while removing its outer chrome. */
+html.erp-modern-active #body-wrapper { display: none !important; }
+html.erp-modern-active #main-content { display: block !important; width: 100% !important; min-height: 0 !important; margin: 0 !important; padding: 0 !important; float: none !important; background: transparent !important; }
+html.erp-modern-active #main-content > div.content-box-header:first-of-type,
+html.erp-modern-active #main-content > .page-title { display: none !important; }
+html.erp-modern-active #main-content .clear,
+html.erp-modern-active #main-content .form-content { width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 !important; background: transparent !important; border: 0 !important; }
+html.erp-modern-active #main-content form { width: 100% !important; margin: 0 !important; color: #26354b !important; font: inherit !important; }
+html.erp-modern-active #main-content form table { width: 100% !important; max-width: 100% !important; border-collapse: separate !important; border-spacing: 0 8px !important; }
+html.erp-modern-active #main-content form td { padding: 6px 9px !important; color: #53627a !important; font: inherit !important; vertical-align: middle !important; }
+html.erp-modern-active #main-content form td:first-child { color: #34445d !important; font-size: 12px !important; }
+html.erp-modern-active #main-content form input:not([type="hidden"]),
+html.erp-modern-active #main-content form select,
+html.erp-modern-active #main-content form textarea { max-width: 100% !important; min-height: 36px; padding: 7px 9px !important; border: 1px solid #d8e0ea !important; border-radius: 5px !important; background-color: #fff !important; color: #24334a !important; font-family: inherit !important; font-size: 13px !important; line-height: 1.35 !important; box-shadow: none !important; }
+html.erp-modern-active #main-content form input:focus,
+html.erp-modern-active #main-content form select:focus,
+html.erp-modern-active #main-content form textarea:focus { border-color: #86a5de !important; outline: 0 !important; box-shadow: 0 0 0 3px rgba(49, 95, 186, .1) !important; }
+html.erp-modern-active #main-content form input[type="checkbox"],
+html.erp-modern-active #main-content form input[type="radio"] { min-height: auto; accent-color: var(--erp-blue); }
+html.erp-modern-active #main-content form input[type="submit"],
+html.erp-modern-active #main-content form button,
+html.erp-modern-active #main-content form input[type="button"] { min-height: 34px; padding: 7px 13px !important; border: 1px solid #cbd8ec !important; border-radius: 5px !important; background: #edf3fd !important; color: #294f94 !important; font-size: 12px !important; font-weight: 650 !important; }
+html.erp-modern-active #main-content form img { max-width: 100%; }
+html.erp-modern-active #main-content .dataTables_wrapper,
+html.erp-modern-active #main-content .table-responsive { max-width: 100%; overflow-x: auto; }
+html.erp-modern-active #main-content table.dataTable,
+html.erp-modern-active #main-content .table { border: 1px solid var(--erp-line) !important; border-collapse: collapse !important; background: #fff; }
+html.erp-modern-active #main-content table.dataTable th,
+html.erp-modern-active #main-content table.dataTable td,
+html.erp-modern-active #main-content .table th,
+html.erp-modern-active #main-content .table td { padding: 8px 10px !important; border-color: #edf0f4 !important; color: #39485e !important; font-size: 12px !important; }
+html.erp-modern-active #main-content table.dataTable thead th,
+html.erp-modern-active #main-content .table thead th { background: #f5f7fa !important; color: #637189 !important; font-weight: 650 !important; }
+html.erp-modern-active #main-content a { color: #315fba; }
+html.erp-modern-active #main-content .chosen-container { max-width: 100%; }
+html.erp-modern-active #main-content .chosen-container-single .chosen-single { height: 36px !important; padding: 5px 9px !important; border: 1px solid #d8e0ea !important; border-radius: 5px !important; background: #fff !important; box-shadow: none !important; color: #24334a !important; line-height: 24px !important; }
+html.erp-modern-active #main-content .chosen-container .chosen-drop { border-color: #d8e0ea !important; box-shadow: var(--erp-shadow) !important; }
+html.erp-modern-active #chatbot-container,
+html.erp-modern-active #chatbot-launcher { display: none !important; }
+
+@media (max-width: 920px) {
+  #erp-modern-shell .erp-topbar { gap: 10px; padding-right: 16px; padding-left: 16px; }
+  #erp-modern-shell .erp-brand { min-width: auto; }
+  #erp-modern-shell .erp-primary-nav { gap: 0; overflow-x: auto; }
+  #erp-modern-shell .erp-primary-nav a { padding: 0 8px; font-size: 11px; }
+  #erp-modern-shell .erp-searchbar-row { align-items: flex-start; flex-direction: column; gap: 6px; padding: 10px 16px; }
+  #erp-modern-shell .erp-search-wrap { width: 100%; }
+  #erp-modern-shell .erp-search-hint { display: none; }
+  #erp-modern-shell .erp-main { width: calc(100% - 32px); padding-top: 18px; }
+}
+@media (max-width: 640px) {
+  #erp-modern-shell .erp-topbar { flex-wrap: wrap; padding-top: 8px; }
+  #erp-modern-shell .erp-primary-nav { order: 3; width: 100%; height: 37px; }
+  #erp-modern-shell .erp-more-button { align-self: center; }
+  #erp-modern-shell .erp-more-panel { top: calc(100% + 6px) !important; right: 0 !important; width: min(320px, calc(100vw - 24px)) !important; }
+  #erp-modern-shell .erp-workflow-grid { grid-template-columns: 1fr; }
+  #erp-modern-shell .erp-workflow-card { min-height: 74px; }
+  #erp-modern-shell .erp-page-heading { align-items: flex-start; flex-direction: column; }
+  #erp-modern-shell .erp-page-context { display: none; }
+  #erp-modern-shell .erp-source-content { padding: 14px; }
+  #erp-modern-shell .erp-result-actions { flex-direction: column; }
+  #erp-modern-shell .erp-result-row { align-items: flex-start; }
+}
+
+@font-face { font-family:"Libron"; src:url("/tsvh_asset/fonts/Libron-Regular.woff2") format("woff2"); font-style:normal; font-weight:400; font-display:swap; }
+@font-face { font-family:"Libron"; src:url("/tsvh_asset/fonts/Libron-Bold.woff2") format("woff2"); font-style:normal; font-weight:700; font-display:swap; }
+@font-face { font-family:"Libron"; src:url("/tsvh_asset/fonts/Libron-Italic.woff2") format("woff2"); font-style:italic; font-weight:400; font-display:swap; }
+@font-face { font-family:"Libron"; src:url("/tsvh_asset/fonts/Libron-BoldItalic.woff2") format("woff2"); font-style:italic; font-weight:700; font-display:swap; }
+
+/* School identity and the receipt-inspired dashboard finish. */
+#erp-modern-shell {
+  --erp-ink: #111827;
+  --erp-muted: #64748b;
+  --erp-line: #dce3eb;
+  --erp-bg: #e7ebf0;
+  --erp-blue: #315fba;
+  --erp-blue-dark: #244e9f;
+  --erp-shadow: 0 14px 36px rgba(15, 23, 42, .09), 0 3px 10px rgba(15, 23, 42, .04);
+  overflow: visible;
+  font-family: "Libron", Inter, ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  background: var(--erp-bg);
+}
+#erp-modern-shell :is(h1,h2,h3,h4,h5,h6) { font-family:"Playfair Display",Georgia,serif; }
+#erp-modern-shell .erp-school-watermark {
+  position: fixed;
+  z-index: 0;
+  top: 50%; left: 50%;
+  width: min(64vmin, 680px);
+  max-height: 82vh;
+  object-fit: contain;
+  opacity: .045;
+  filter: grayscale(100%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  user-select: none;
+}
+#erp-modern-shell .erp-school-text-watermark {
+  position:fixed; z-index:0; top:0; left:50%; display:grid; grid-auto-rows:38px; gap:0;
+  color:#475569; opacity:.045; font-size:12px; font-weight:800; letter-spacing:.6px;
+  line-height:38px; white-space:nowrap; transform:translateX(-50%) rotate(-28deg);
+  pointer-events:none; user-select:none;
+}
+#erp-modern-shell .erp-school-text-watermark span:nth-child(even) { transform:translateX(-70px); }
+#erp-modern-shell .erp-app-frame { position: relative; z-index: 1; }
+#erp-modern-shell .erp-topbar {
+  display:flex; gap:18px;
+  min-height: 70px;
+  border-bottom-color: rgba(203, 213, 225, .8);
+  background: rgba(255, 255, 255, .9);
+  backdrop-filter: blur(18px);
+}
+#erp-modern-shell .erp-brand { min-width:0; gap:12px; flex:none; }
+#erp-modern-shell .erp-brand-mark {
+  width: 48px; height: 48px; flex:none; overflow: hidden; border-radius: 12px;
+  border: 1px solid rgba(203, 213, 225, .6); background: #fff;
+  box-shadow: 0 3px 10px rgba(15, 23, 42, .08);
+}
+#erp-modern-shell .erp-brand-mark img { width: 100%; height: 100%; object-fit: contain; }
+#erp-modern-shell .erp-brand-copy { max-width:none; min-width:0; }
+#erp-modern-shell .erp-brand-copy strong { display:block; color: #182335; font-family:Georgia,"Times New Roman",serif; font-size: 15px; font-weight: 700; letter-spacing: -.025em; line-height: 1.2; white-space:nowrap; }
+#erp-modern-shell .erp-brand-copy small { color: #78869a; font-size: 10px; }
+#erp-modern-shell .erp-primary-nav { position:static; min-width:0; height:70px; flex:1 1 auto; justify-content:center; gap:2px; overflow-x:auto; }
+#erp-modern-shell .erp-primary-nav a { flex:none; padding:0 9px; font-size:12px; }
+#erp-modern-shell .erp-topbar-actions { display:flex; align-items:center; gap:8px; margin-left:auto; }
+#erp-modern-shell .erp-primary-nav a[aria-current="page"] { border-color:var(--erp-blue); }
+#erp-modern-shell .erp-theme-toggle {
+  display:grid; width:34px; height:34px; place-items:center; margin-left:auto;
+  border:1px solid var(--erp-line); border-radius:50%; background:rgba(255,255,255,.8); color:#384860;
+  box-shadow:0 2px 7px rgba(15,23,42,.05); font-size:17px;
+}
+#erp-modern-shell .erp-theme-toggle:hover { border-color:#a8b8cf; box-shadow:0 4px 12px rgba(15,23,42,.1); }
+#erp-modern-shell .erp-more-button { margin-left:0; border-radius:8px; }
+#erp-modern-shell .erp-searchbar-row {
+  gap:16px; padding-top:17px; padding-bottom:17px;
+  border-bottom-color:rgba(203,213,225,.7); background:rgba(249,250,252,.78); backdrop-filter:blur(16px);
+}
+#erp-modern-shell .erp-search-wrap {
+  width: min(760px, 100%);
+  padding: 2px !important;
+  border-radius: 14px !important;
+  background: linear-gradient(135deg, #4285f4 0%, #9b72cb 35%, #d96570 70%, #f4b400 100%) !important;
+  box-shadow: 0 4px 15px rgba(66, 133, 244, .12);
+  transition: transform .22s cubic-bezier(.2,0,0,1), box-shadow .22s ease;
+  box-sizing: border-box !important;
+}
+#erp-modern-shell .erp-search-wrap:hover { transform: translateY(-1px); filter: saturate(1.12); box-shadow: 0 7px 20px rgba(66, 133, 244, .15); }
+#erp-modern-shell .erp-search-wrap:focus-within { box-shadow: 0 0 0 2px rgba(66, 133, 244, .25), 0 8px 23px rgba(66, 133, 244, .18); }
+#erp-modern-shell .erp-global-search {
+  height: 50px;
+  overflow: hidden !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  background: #ffffff;
+  box-shadow: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+#erp-modern-shell:not([data-theme="dark"]) .erp-global-search,
+#erp-modern-shell[data-theme="light"] .erp-global-search {
+  background: #ffffff !important;
+}
+#erp-modern-shell .erp-global-search:focus-within { border: 0 !important; box-shadow: none !important; }
+#erp-modern-shell .erp-extension-toggle { display:inline-flex; align-items:center; gap:6px; min-height:34px; padding:0 10px; border:1px solid #dce4ed; border-radius:9px; background:#fff; color:#37465b; font-size:10px; font-weight:750; white-space:nowrap; }
+#erp-modern-shell .erp-extension-toggle span { color:#218451; font-size:9px; }
+#erp-modern-shell #erp-student-search { height:48px; font-size:14px; }
+#erp-modern-shell .erp-search-hint { color:#64748b; font-size:11px; }
+#erp-modern-shell .erp-main { padding-top:25px; }
+#erp-modern-shell .erp-page-heading { margin-bottom:18px; }
+#erp-modern-shell .erp-page-heading h1 { color:#172235; font-family:"Playfair Display",Georgia,serif; font-size:27px; font-weight:800; letter-spacing:-.018em; }
+#erp-modern-shell .erp-eyebrow { color:#9a6a28; letter-spacing:.16em; }
+#erp-modern-shell .erp-page-context { padding:7px 11px; border:1px solid rgba(203,213,225,.8); border-radius:99px; background:rgba(255,255,255,.56); color:#64748b; }
+#erp-modern-shell .erp-action-area { margin-bottom:18px; }
+#erp-modern-shell .erp-student-workspaces { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:17px; align-items:stretch; }
+#erp-modern-shell .erp-workspace-card {
+  display:flex; min-width:0; min-height:0; flex-direction:column; overflow:hidden;
+  border:1px solid rgba(203,213,225,.82); border-radius:16px;
+  background:rgba(255,255,255,.82); box-shadow:0 10px 30px rgba(15,23,42,.07), 0 2px 7px rgba(15,23,42,.035);
+  backdrop-filter:blur(13px); transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+#erp-modern-shell .erp-workspace-card:hover { border-color:#c5d2e3; box-shadow:0 14px 38px rgba(15,23,42,.1); }
+#erp-modern-shell .erp-workspace-heading { display:flex; min-height:76px; align-items:center; gap:11px; padding:15px 17px; border-bottom:1px solid rgba(226,232,240,.8); }
+#erp-modern-shell .erp-workspace-icon { display:grid; width:38px; height:38px; flex:none; place-items:center; border:1px solid #dce7f7; border-radius:12px; background:#edf3fc; color:#3f64a5; font-size:18px; font-weight:750; }
+#erp-modern-shell .erp-workspace-icon svg { width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+#erp-modern-shell .erp-fee-icon { border-color:#f1e0bb; background:#fff7e8; color:#9a6a28; }
+#erp-modern-shell .erp-workspace-heading h2 { margin:0; color:#172235; font-family:"Playfair Display",Georgia,serif; font-size:17px; font-weight:800; }
+#erp-modern-shell .erp-workspace-heading p { margin:3px 0 0; color:#7a8798; font-size:10px; }
+#erp-modern-shell .erp-workspace-status { margin-left:auto; padding:5px 8px; border:1px solid #e2e8f0; border-radius:99px; background:#f8fafc; color:#7b8798; font-size:9px; font-weight:700; white-space:nowrap; }
+#erp-modern-shell .erp-workspace-status[data-state="ready"] { border-color:#cce8d8; background:#effaf3; color:#237a5a; }
+#erp-modern-shell .erp-workspace-status[data-state="busy"] { border-color:#d7e3fa; background:#f0f5ff; color:#315fba; }
+#erp-modern-shell .erp-workspace-status[data-state="error"] { border-color:#f4d4d4; background:#fff5f5; color:#a34242; }
+#erp-modern-shell .erp-workspace-body { position:relative; min-height:0; flex:0 0 auto; overflow:hidden; padding:14px 16px; }
+#erp-modern-shell .erp-student-workspace-body { min-height:260px; }
+#erp-modern-shell .erp-student-card .erp-student-workspace-body { flex:1 0 auto; overflow:visible; padding-bottom:18px; }
+#erp-modern-shell .erp-fee-workspace-body { min-height:280px; padding:0; }
+#erp-modern-shell .erp-workspace-empty { display:grid; min-height:230px; align-content:center; justify-items:center; gap:8px; padding:25px; text-align:center; }
+#erp-modern-shell .erp-workspace-empty > span { display:grid; width:39px; height:39px; place-items:center; border-radius:12px; background:#f1f5fa; color:#78869a; font-size:11px; font-weight:800; }
+#erp-modern-shell .erp-workspace-empty strong { color:#34445d; font-size:13px; }
+#erp-modern-shell .erp-workspace-empty small { max-width:290px; color:#8491a3; font-size:11px; line-height:1.55; }
+#erp-modern-shell .erp-student-summary { display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:11px; padding:10px 12px; border:1px solid #e6ebf1; border-radius:10px; background:rgba(248,250,252,.84); }
+#erp-modern-shell .erp-student-summary strong { min-width:0; overflow:hidden; color:#172235; font-size:14px; text-overflow:ellipsis; white-space:nowrap; }
+#erp-modern-shell .erp-student-summary small { flex:none; color:#748196; font-size:10px; }
+#erp-modern-shell .erp-student-fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 16px; margin:0; }
+#erp-modern-shell .erp-student-fields > div { min-width:0; padding:7px 2px; border-bottom:1px solid #edf0f4; }
+#erp-modern-shell .erp-student-fields dt { margin-bottom:2px; color:#8792a1; font-size:9px; }
+#erp-modern-shell .erp-student-fields dd { margin:0; overflow:hidden; color:#34445d; font-size:11px; font-weight:650; text-overflow:ellipsis; white-space:nowrap; }
+#erp-modern-shell .erp-fee-summary { padding:12px 14px 9px; border-bottom:1px solid rgba(226,232,240,.8); background:rgba(248,250,252,.54); }
+#erp-modern-shell .erp-fee-summary-head { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:9px; }
+#erp-modern-shell .erp-fee-summary-head strong { overflow:hidden; color:#172235; font-size:12px; text-overflow:ellipsis; white-space:nowrap; }
+#erp-modern-shell .erp-fee-summary-head small { overflow:hidden; color:#7d8999; font-size:9px; text-align:right; text-overflow:ellipsis; white-space:nowrap; }
+#erp-modern-shell .erp-fee-summary dl { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; margin:0; }
+#erp-modern-shell .erp-fee-summary dl > div { min-width:0; padding:7px 8px; border:1px solid #e7ebf1; border-radius:8px; background:rgba(255,255,255,.74); }
+#erp-modern-shell .erp-fee-summary dt { color:#8792a1; font-size:9px; }
+#erp-modern-shell .erp-fee-summary dd { margin:3px 0 0; overflow:hidden; color:#33445e; font-size:11px; font-weight:800; text-overflow:ellipsis; white-space:nowrap; }
+#erp-modern-shell .erp-fee-summary dl > div:nth-child(4) dd { color:#237a5a; }
+#erp-modern-shell .erp-fee-summary dl > div:last-child { border-color:#f1dfbf; background:#fff9ee; }
+#erp-modern-shell .erp-fee-summary dl > div:last-child dd { color:#99621b; }
+#erp-modern-shell .erp-fee-panel { position:relative; min-height:280px; height:100%; padding:13px 14px; overflow:hidden; }
+#erp-modern-shell .erp-fee-panel .erp-fee-summary { padding:0 0 11px; border:0; background:transparent; }
+#erp-modern-shell .erp-fee-quick-form { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto; align-items:end; gap:9px; padding-top:10px; border-top:1px solid rgba(226,232,240,.8); }
+#erp-modern-shell .erp-fee-quick-form label { display:grid; min-width:0; gap:5px; color:#78869a; font-size:10px; font-weight:700; }
+#erp-modern-shell .erp-fee-quick-form input { width:100%; min-width:0; min-height:37px; padding:7px 9px; border:1px solid #dbe3ef; border-radius:8px; outline:none; background:#fff; color:#24334a; font-size:12px; box-shadow:inset 0 1px 2px rgba(15,23,42,.025); }
+#erp-modern-shell .erp-fee-quick-form input:focus { border-color:#9db4de; box-shadow:0 0 0 3px rgba(49,95,186,.1); }
+#erp-modern-shell .erp-fee-quick-form input:read-only { background:#f5f7fa; }
+#erp-modern-shell .erp-fee-quick-form button { min-height:37px; padding:7px 14px; border:1px solid #b8cae8; border-radius:8px; background:#edf3fd; color:#315fba; font-size:11px; font-weight:800; box-shadow:0 3px 8px rgba(49,95,186,.08); }
+#erp-modern-shell .erp-fee-quick-form button:hover:not(:disabled) { border-color:#91a9d1; background:#e5eefc; }
+#erp-modern-shell .erp-fee-quick-form button:disabled { cursor:not-allowed; opacity:.48; }
+#erp-modern-shell .erp-fee-loading { position:absolute; z-index:5; inset:0; display:grid; align-content:center; justify-items:center; gap:9px; padding:22px; border-radius:0 0 15px 15px; background:rgba(248,250,253,.94); text-align:center; backdrop-filter:blur(4px); }
+#erp-modern-shell .erp-fee-loading[hidden] { display:none!important; }
+#erp-modern-shell .erp-fee-loading strong { color:#2b3c56; font-size:13px; }
+#erp-modern-shell .erp-fee-loading small { max-width:270px; color:#77859a; font-size:10px; line-height:1.5; }
+#erp-modern-shell .erp-fee-spinner { width:25px; height:25px; border:3px solid #cfdaeb; border-top-color:#426fbc; border-radius:50%; animation:erp-rotate .8s linear infinite; }
+#erp-modern-shell .erp-fee-message { margin:10px 0 0; padding:8px 10px; border:1px solid #cce8d8; border-radius:8px; background:#effaf3; color:#237a5a; font-size:10px; line-height:1.45; }
+#erp-modern-shell .erp-fee-message[hidden] { display:none!important; }
+#erp-modern-shell .erp-fee-message[data-state="error"] { border-color:#f1d1d1; background:#fff5f5; color:#a34242; }
+#erp-modern-shell .erp-source-frame { display:none!important; width:0!important; height:0!important; border:0!important; visibility:hidden!important; }
+#erp-modern-shell .erp-workspace-status[data-state="busy"]::before { content:""; display:inline-block; width:9px; height:9px; margin-right:5px; vertical-align:-1px; border:1.5px solid currentColor; border-right-color:transparent; border-radius:50%; animation:erp-rotate .65s linear infinite; }
+#erp-modern-shell .erp-embedded-erp { display:block; width:100%; height:100%; min-height:360px; border:0; background:transparent; }
+#erp-modern-shell .erp-fee-workspace-body .erp-embedded-erp { min-height:420px; }
+#erp-modern-shell .erp-workspace-footer { position:relative; z-index:1; display:flex; flex:0 0 auto; justify-content:flex-end; padding:10px 15px; border-top:1px solid rgba(226,232,240,.8); background:rgba(248,250,252,.55); }
+#erp-modern-shell .erp-student-card .erp-workspace-footer { justify-content:space-between; gap:8px; margin-top:0; }
+#erp-modern-shell .erp-workspace-open { display:inline-flex; align-items:center; gap:8px; padding:7px 10px; border:1px solid #d9e3f3; border-radius:8px; background:#f4f7fd; color:#315fba; font-size:10px; font-weight:750; text-decoration:none; }
+#erp-modern-shell .erp-workspace-open:hover { border-color:#b7c9e7; background:#eaf0fc; }
+#erp-modern-shell .erp-workspace-open[aria-disabled="true"] { opacity:.45; pointer-events:none; }
+#erp-modern-shell .erp-workspace-open:disabled { cursor:not-allowed; opacity:.45; }
+#erp-modern-shell .erp-dashboard-source { margin-top:18px; border-color:rgba(203,213,225,.74); border-radius:12px; background:rgba(255,255,255,.5); }
+#erp-modern-shell .erp-source-content:has(.erp-student-workspaces) { padding:0; border:0; background:transparent; box-shadow:none; }
+#erp-modern-shell .erp-page-intro { display:none; }
+
+#erp-modern-shell[data-theme="dark"] {
+  --erp-ink:#f2f2f2; --erp-muted:#a3a3a3; --erp-line:#303030; --erp-bg:#000;
+  --erp-blue:#d4d4d4; --erp-blue-dark:#f3f3f3; --erp-green:#4ade80;
+  --erp-shadow:0 18px 48px rgba(0,0,0,.72);
+  color-scheme:dark; color:#f2f2f2; background:#000;
+}
+#erp-modern-shell[data-theme="dark"] .erp-boot-skeleton,
+#erp-modern-shell[data-theme="dark"] .erp-skeleton-topbar,
+#erp-modern-shell[data-theme="dark"] .erp-skeleton-search,
+#erp-modern-shell[data-theme="dark"] .erp-skeleton-grid i,
+#erp-modern-shell[data-theme="dark"] .erp-skeleton-card { border-color:#292929; background:#050505; }
+#erp-modern-shell[data-theme="dark"] .erp-skeleton-topbar i,
+#erp-modern-shell[data-theme="dark"] .erp-skeleton-topbar span,
+#erp-modern-shell[data-theme="dark"] .erp-skeleton-topbar b,
+#erp-modern-shell[data-theme="dark"] .erp-skeleton-search i,
+#erp-modern-shell[data-theme="dark"] .erp-skeleton-search span,
+#erp-modern-shell[data-theme="dark"] .erp-skeleton-search small,
+#erp-modern-shell[data-theme="dark"] .erp-skeleton-heading i,
+#erp-modern-shell[data-theme="dark"] .erp-skeleton-heading small,
+#erp-modern-shell[data-theme="dark"] .erp-skeleton-grid b,
+#erp-modern-shell[data-theme="dark"] .erp-skeleton-grid span,
+#erp-modern-shell[data-theme="dark"] .erp-skeleton-grid small { background:#242424; }
+#erp-modern-shell[data-theme="dark"] .erp-topbar { border-color:#292929; background:#050505; }
+#erp-modern-shell[data-theme="dark"] .erp-brand-copy strong,
+#erp-modern-shell[data-theme="dark"] .erp-page-heading h1,
+#erp-modern-shell[data-theme="dark"] .erp-workspace-heading h2 { color:#f1f1f1; }
+#erp-modern-shell[data-theme="dark"] .erp-brand-copy small,
+#erp-modern-shell[data-theme="dark"] .erp-primary-nav a,
+#erp-modern-shell[data-theme="dark"] .erp-search-hint,
+#erp-modern-shell[data-theme="dark"] .erp-page-context { color:#a3a3a3; }
+#erp-modern-shell[data-theme="dark"] .erp-brand-mark,
+#erp-modern-shell[data-theme="dark"] .erp-workspace-icon,
+#erp-modern-shell[data-theme="dark"] .erp-fee-icon { border-color:#353535; background:#101010; color:#d1d1d1; }
+#erp-modern-shell[data-theme="dark"] .erp-school-watermark { opacity:.055; filter:invert(1) grayscale(100%); }
+#erp-modern-shell[data-theme="dark"] .erp-school-text-watermark { color:#bdbdbd; opacity:.075; }
+#erp-modern-shell[data-theme="dark"] .erp-primary-nav a:hover,
+#erp-modern-shell[data-theme="dark"] .erp-primary-nav a[aria-current="page"] { color:#f4f4f4; }
+#erp-modern-shell[data-theme="dark"] .erp-primary-nav a[aria-current="page"] { border-color:#d2d2d2; }
+#erp-modern-shell[data-theme="dark"] .erp-more-button,
+#erp-modern-shell[data-theme="dark"] .erp-theme-toggle,
+#erp-modern-shell[data-theme="dark"] .erp-extension-toggle { border-color:#383838; background:#111; color:#e6e6e6; }
+#erp-modern-shell[data-theme="dark"] .erp-extension-toggle span { color:#4ade80; }
+#erp-modern-shell[data-theme="dark"] .erp-more-button:hover,
+#erp-modern-shell[data-theme="dark"] .erp-theme-toggle:hover,
+#erp-modern-shell[data-theme="dark"] .erp-extension-toggle:hover { border-color:#666; background:#1b1b1b; box-shadow:0 4px 14px rgba(0,0,0,.55); }
+#erp-modern-shell[data-theme="dark"] .erp-more-panel,
+#erp-modern-shell[data-theme="dark"] .erp-search-results { border-color:#383838; background:#090909; box-shadow:0 16px 42px rgba(0,0,0,.75); }
+#erp-modern-shell[data-theme="dark"] .erp-more-filter-label,
+#erp-modern-shell[data-theme="dark"] .erp-result-copy strong { color:#e8e8e8; }
+#erp-modern-shell[data-theme="dark"] #erp-more-filter { border-color:#383838; background:#151515; color:#f1f1f1; }
+#erp-modern-shell[data-theme="dark"] #erp-more-filter:focus { border-color:#777; box-shadow:0 0 0 3px rgba(255,255,255,.07); }
+#erp-modern-shell[data-theme="dark"] .erp-more-links a { border-color:#292929; color:#d0d0d0; }
+#erp-modern-shell[data-theme="dark"] .erp-more-links a:hover { background:#1b1b1b; color:#fff; }
+#erp-modern-shell[data-theme="dark"] .erp-searchbar-row { border-color:#282828; background:#080808; }
+#erp-modern-shell[data-theme="dark"] .erp-search-wrap:hover { box-shadow:0 7px 20px rgba(0,0,0,.65); }
+#erp-modern-shell[data-theme="dark"] .erp-search-wrap:focus-within { box-shadow:0 0 0 2px rgba(255,255,255,.09),0 8px 22px rgba(0,0,0,.7); }
+#erp-modern-shell[data-theme="dark"] .erp-global-search {
+  border-color: transparent !important;
+  background: #151515 !important;
+  box-shadow: none !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-global-search:focus-within {
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-search-icon {
+  color: #a0a0a0 !important;
+}
+#erp-modern-shell[data-theme="dark"] #erp-search-by {
+  background: transparent !important;
+  color: #e7e7e7 !important;
+  border-color: #393939 !important;
+  border-right: 1px solid #333333 !important;
+}
+#erp-modern-shell[data-theme="dark"] #erp-search-by option {
+  background: #1e1e1e !important;
+  color: #ededed !important;
+}
+#erp-modern-shell[data-theme="dark"] #erp-student-search {
+  background: transparent !important;
+  color: #e7e7e7 !important;
+}
+#erp-modern-shell[data-theme="dark"] #erp-student-search::placeholder {
+  color: #858585 !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-search-shortcut kbd { border-color:#3a3a3a; background:#1a1a1a; color:#b7b7b7; }
+#erp-modern-shell[data-theme="dark"] .erp-search-spinner { border-color:#454545; border-top-color:#d0d0d0; }
+#erp-modern-shell[data-theme="dark"] .erp-result-row { border-color:#292929; }
+#erp-modern-shell[data-theme="dark"] .erp-result-row[aria-selected="true"],
+#erp-modern-shell[data-theme="dark"] .erp-result-row:hover { background:#171717; }
+#erp-modern-shell[data-theme="dark"] .erp-avatar { background:#252525; color:#d6d6d6; }
+#erp-modern-shell[data-theme="dark"] .erp-result-copy small,
+#erp-modern-shell[data-theme="dark"] .erp-result-enter,
+#erp-modern-shell[data-theme="dark"] .erp-action-link-muted { color:#a0a0a0; }
+#erp-modern-shell[data-theme="dark"] .erp-action-link,
+#erp-modern-shell[data-theme="dark"] .erp-action-link-muted:hover { border-color:#414141; background:#1a1a1a; color:#e4e4e4; }
+#erp-modern-shell[data-theme="dark"] .erp-action-link:hover { border-color:#595959; background:#242424; }
+#erp-modern-shell[data-theme="dark"] .erp-eyebrow { color:#a0a0a0; }
+#erp-modern-shell[data-theme="dark"] .erp-page-context { border-color:#383838; background:#101010; }
+#erp-modern-shell[data-theme="dark"] .erp-source-content { border-color:#303030; background:#080808; color:#ededed; box-shadow:0 12px 34px rgba(0,0,0,.55); }
+#erp-modern-shell[data-theme="dark"] .erp-content-skeleton span { background:#222; }
+#erp-modern-shell[data-theme="dark"] .erp-workflow-card { border-color:#303030; background:#090909; color:#ededed; box-shadow:0 3px 12px rgba(0,0,0,.45); }
+#erp-modern-shell[data-theme="dark"] .erp-workflow-card:hover { border-color:#5a5a5a; background:#111; box-shadow:0 8px 22px rgba(0,0,0,.6); }
+#erp-modern-shell[data-theme="dark"] .erp-workflow-icon { background:#202020; color:#ddd; }
+#erp-modern-shell[data-theme="dark"] .erp-workflow-copy strong { color:#e8e8e8; }
+#erp-modern-shell[data-theme="dark"] .erp-workflow-copy small,
+#erp-modern-shell[data-theme="dark"] .erp-workflow-arrow { color:#a0a0a0; }
+#erp-modern-shell[data-theme="dark"] .erp-student-workspaces { color:#eee; }
+#erp-modern-shell[data-theme="dark"] .erp-workspace-card { border-color:#303030; background:#090909; box-shadow:0 12px 32px rgba(0,0,0,.65); }
+#erp-modern-shell[data-theme="dark"] .erp-workspace-card:hover { border-color:#555; box-shadow:0 16px 38px rgba(0,0,0,.8); }
+#erp-modern-shell[data-theme="dark"] .erp-workspace-heading,
+#erp-modern-shell[data-theme="dark"] .erp-workspace-footer { border-color:#292929; background:#070707; }
+#erp-modern-shell[data-theme="dark"] .erp-workspace-heading p,
+#erp-modern-shell[data-theme="dark"] .erp-student-summary small,
+#erp-modern-shell[data-theme="dark"] .erp-student-fields dt { color:#a1a1a1; }
+#erp-modern-shell[data-theme="dark"] .erp-student-summary { border-color:#303030; background:#111; }
+#erp-modern-shell[data-theme="dark"] .erp-student-summary strong,
+#erp-modern-shell[data-theme="dark"] .erp-student-fields dd { color:#e7e7e7; }
+#erp-modern-shell[data-theme="dark"] .erp-student-fields > div { border-color:#2c2c2c; }
+#erp-modern-shell[data-theme="dark"] .erp-fee-summary { border-color:#303030; background:#0a0a0a; }
+#erp-modern-shell[data-theme="dark"] .erp-fee-summary-head strong { color:#ececec; }
+#erp-modern-shell[data-theme="dark"] .erp-fee-summary-head small,
+#erp-modern-shell[data-theme="dark"] .erp-fee-summary dt { color:#a3a3a3; }
+#erp-modern-shell[data-theme="dark"] .erp-fee-summary dl > div { border-color:#303030; background:#111; }
+#erp-modern-shell[data-theme="dark"] .erp-fee-summary dd { color:#dedede; }
+#erp-modern-shell[data-theme="dark"] .erp-fee-summary dl > div:nth-child(4) dd { color:#4ade80; }
+#erp-modern-shell[data-theme="dark"] .erp-fee-summary dl > div:last-child { border-color:#4b2b2b; background:#170b0b; }
+#erp-modern-shell[data-theme="dark"] .erp-fee-summary dl > div:last-child dd { color:#f18b8b; }
+#erp-modern-shell[data-theme="dark"] .erp-fee-quick-form { border-color:#303030; }
+#erp-modern-shell[data-theme="dark"] .erp-fee-quick-form label { color:#aaa; }
+#erp-modern-shell[data-theme="dark"] .erp-fee-quick-form input { border-color:#393939; background:#141414; color:#eee; box-shadow:none; }
+#erp-modern-shell[data-theme="dark"] .erp-fee-quick-form input:focus { border-color:#777; box-shadow:0 0 0 3px rgba(255,255,255,.07); }
+#erp-modern-shell[data-theme="dark"] .erp-fee-quick-form input:read-only { background:#1b1b1b; }
+#erp-modern-shell[data-theme="dark"] .erp-fee-quick-form button { border-color:#424242; background:#202020; color:#eee; box-shadow:none; }
+#erp-modern-shell[data-theme="dark"] .erp-fee-quick-form button:hover:not(:disabled) { border-color:#6a6a6a; background:#2a2a2a; }
+#erp-modern-shell[data-theme="dark"] .erp-fee-loading { background:rgba(0,0,0,.96); }
+#erp-modern-shell[data-theme="dark"] .erp-fee-loading strong { color:#eee; }
+#erp-modern-shell[data-theme="dark"] .erp-fee-loading small { color:#aaa; }
+#erp-modern-shell[data-theme="dark"] .erp-fee-spinner { border-color:#414141; border-top-color:#eee; }
+#erp-modern-shell[data-theme="dark"] .erp-fee-message { border-color:#28553c; background:#0b1a11; color:#71dc97; }
+#erp-modern-shell[data-theme="dark"] .erp-fee-message[data-state="error"] { border-color:#582c2c; background:#1a0b0b; color:#f18b8b; }
+#erp-modern-shell[data-theme="dark"] .erp-workspace-empty strong { color:#e2e2e2; }
+#erp-modern-shell[data-theme="dark"] .erp-workspace-empty small { color:#a0a0a0; }
+#erp-modern-shell[data-theme="dark"] .erp-workspace-empty > span { background:#1c1c1c; color:#bbb; }
+#erp-modern-shell[data-theme="dark"] .erp-workspace-status { border-color:#383838; background:#141414; color:#bdbdbd; }
+#erp-modern-shell[data-theme="dark"] .erp-workspace-status[data-state="ready"] { border-color:#28553c; background:#0b1a11; color:#71dc97; }
+#erp-modern-shell[data-theme="dark"] .erp-workspace-status[data-state="error"] { border-color:#582c2c; background:#1a0b0b; color:#f18b8b; }
+#erp-modern-shell[data-theme="dark"] .erp-workspace-open { border-color:#414141; background:#171717; color:#e5e5e5; }
+#erp-modern-shell[data-theme="dark"] .erp-workspace-open:hover:not(:disabled) { border-color:#666; background:#252525; }
+#erp-modern-shell[data-theme="dark"] .erp-workspace-open:disabled { border-color:#303030; background:#101010; color:#777; }
+#erp-modern-shell[data-theme="dark"] .erp-dashboard-source { border-color:#303030; background:#080808; }
+#erp-modern-shell[data-theme="dark"] .erp-dashboard-source > summary { border-color:#303030; color:#bbb; }
+/* Dark styling for the original ERP forms and tables moved into the shell. */
+#erp-modern-shell[data-theme="dark"] #main-content,
+#erp-modern-shell[data-theme="dark"] #main-content form { color:#e8e8e8!important; background:transparent!important; }
+#erp-modern-shell[data-theme="dark"] #main-content form td,
+#erp-modern-shell[data-theme="dark"] #main-content form td:first-child { color:#c4c4c4!important; }
+#erp-modern-shell[data-theme="dark"] #main-content form input:not([type="hidden"]),
+#erp-modern-shell[data-theme="dark"] #main-content form select,
+#erp-modern-shell[data-theme="dark"] #main-content form textarea,
+#erp-modern-shell[data-theme="dark"] #erp-more-filter { border-color:#383838!important; background:#141414!important; color:#eee!important; }
+#erp-modern-shell[data-theme="dark"] #main-content form input:focus,
+#erp-modern-shell[data-theme="dark"] #main-content form select:focus,
+#erp-modern-shell[data-theme="dark"] #main-content form textarea:focus { border-color:#777!important; box-shadow:0 0 0 3px rgba(255,255,255,.07)!important; }
+#erp-modern-shell[data-theme="dark"] #main-content form input[type="checkbox"],
+#erp-modern-shell[data-theme="dark"] #main-content form input[type="radio"] { accent-color:#d0d0d0; }
+#erp-modern-shell[data-theme="dark"] #main-content form input[type="submit"],
+#erp-modern-shell[data-theme="dark"] #main-content form button,
+#erp-modern-shell[data-theme="dark"] #main-content form input[type="button"] { border-color:#444!important; background:#202020!important; color:#eee!important; }
+#erp-modern-shell[data-theme="dark"] #main-content table.dataTable,
+#erp-modern-shell[data-theme="dark"] #main-content .table,
+#erp-modern-shell[data-theme="dark"] #main-content table { border-color:#303030!important; background:#0d0d0d!important; color:#ddd!important; }
+#erp-modern-shell[data-theme="dark"] #main-content table.dataTable th,
+#erp-modern-shell[data-theme="dark"] #main-content table.dataTable td,
+#erp-modern-shell[data-theme="dark"] #main-content .table th,
+#erp-modern-shell[data-theme="dark"] #main-content .table td,
+#erp-modern-shell[data-theme="dark"] #main-content table th,
+#erp-modern-shell[data-theme="dark"] #main-content table td { border-color:#303030!important; background:#101010!important; color:#d0d0d0!important; }
+#erp-modern-shell[data-theme="dark"] #main-content table.dataTable thead th,
+#erp-modern-shell[data-theme="dark"] #main-content .table thead th,
+#erp-modern-shell[data-theme="dark"] #main-content table thead th { background:#1a1a1a!important; color:#e2e2e2!important; }
+#erp-modern-shell[data-theme="dark"] #main-content a { color:#d7d7d7!important; }
+#erp-modern-shell[data-theme="dark"] #main-content .chosen-container-single .chosen-single,
+#erp-modern-shell[data-theme="dark"] #main-content .chosen-container .chosen-drop { border-color:#393939!important; background:#141414!important; color:#eee!important; box-shadow:none!important; }
+#erp-modern-shell[data-theme="dark"] #main-content .chosen-container .chosen-results li { color:#ddd!important; }
+#erp-modern-shell[data-theme="dark"] #main-content .chosen-container .chosen-results li.highlighted { background:#2a2a2a!important; color:#fff!important; }
+
+@media (prefers-reduced-motion: reduce) {
+  #erp-modern-shell * { scroll-behavior:auto; }
+}
+@media (max-width: 1050px) {
+  #erp-modern-shell .erp-brand { min-width: auto; }
+  #erp-modern-shell .erp-brand-copy { max-width: none !important; width: 100% !important; flex: 1 1 auto !important; }
+}
+@media (max-width: 780px) {
+  #erp-modern-shell .erp-student-workspaces { grid-template-columns:1fr; }
+  #erp-modern-shell .erp-workspace-card { min-height:0; }
+  #erp-modern-shell .erp-brand { min-width: auto; }
+  #erp-modern-shell .erp-brand-copy { max-width: none !important; width: 100% !important; flex: 1 1 auto !important; }
+  #erp-modern-shell .erp-school-watermark { width:min(78vmin,560px); }
+}
+@media (max-width: 1000px) {
+  #erp-modern-shell .erp-fee-summary dl { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
+@media (max-width: 520px) {
+  #erp-modern-shell .erp-fee-summary-head { align-items:flex-start; flex-direction:column; gap:3px; }
+  #erp-modern-shell .erp-fee-summary-head small { text-align:left; }
+  #erp-modern-shell .erp-fee-summary dl { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  #erp-modern-shell .erp-student-fields { grid-template-columns:1fr; }
+  #erp-modern-shell .erp-workspace-status { max-width:112px; overflow:hidden; text-overflow:ellipsis; }
+}
+@media (max-width: 1200px) {
+  #erp-modern-shell .erp-topbar { padding: 8px 16px 4px !important; }
+}
+@media (max-width: 780px) {
+  #erp-modern-shell .erp-topbar { padding: 6px 12px 4px !important; gap: 4px !important; }
+}
+@media (max-width: 640px) {
+  #erp-modern-shell .erp-topbar { padding: 6px 10px 4px !important; }
+}
+@media (max-width: 520px) {
+  #erp-modern-shell .erp-student-card .erp-workspace-footer { justify-content:flex-start; gap:6px; flex-wrap:wrap; }
+  #erp-modern-shell .erp-student-card { min-height:0; }
+  #erp-modern-shell .erp-student-workspace-body { min-height:260px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #erp-modern-shell .erp-search-wrap { animation:none; }
+}
+
+/* Keep portal-style calendars above the shell's high stacking layer. */
+html.erp-modern-active :is(#ui-datepicker-div,.ui-datepicker,.datepicker,.datepicker-dropdown,.bootstrap-datetimepicker-widget,.tcal,#tcal,.datepick-popup,.datetimepicker,.flatpickr-calendar,.daterangepicker,#calendarDiv,#CalendarControl,#CalendarControlIFrame) {
+  z-index:2147483647!important;
+}
+
+/* Android WebView mobile tweaks */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+#erp-modern-shell button,
+#erp-modern-shell a,
+#erp-modern-shell input,
+#erp-modern-shell select {
+  touch-action: manipulation;
+}
+.erp-topbar {
+  padding-top: max(8px, env(safe-area-inset-top));
+}
+.erp-search-shortcut {
+  display: none !important;
+}
+.erp-extension-toggle {
+  display: none !important;
+}
+#erp-extension-toggle-floating {
+  display: none !important;
+}
+
+
+/* =======================================================
+   TSVH MOBILE OPTIMIZATIONS (Issues 2, 3, 7)
+   ======================================================= */
+
+/* Search bar: 30% dropdown, 70% input across all pages */
+#erp-modern-shell .erp-global-search {
+  height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  border-radius: 12px !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-global-search {
+  background: #151515 !important;
+}
+#erp-modern-shell #erp-search-by {
+  width: 30% !important;
+  min-width: 85px !important;
+  max-width: 30% !important;
+  flex: 0 0 30% !important;
+  height: 38px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  padding: 0 6px !important;
+  border: 0 !important;
+  border-right: 1px solid #dbe2ea !important;
+  outline: none !important;
+  background: transparent !important;
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  color: var(--erp-ink) !important;
+}
+#erp-modern-shell #erp-student-search {
+  width: 70% !important;
+  min-width: 0 !important;
+  flex: 1 1 70% !important;
+  height: 44px !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  padding: 0 12px !important;
+  border: 0 !important;
+  outline: none !important;
+  color: var(--erp-ink) !important;
+}
+
+/* Sizing enhancements for Android phone screens */
+#erp-modern-shell {
+  font-size: 15px !important;
+}
+#erp-modern-shell .erp-brand-copy strong {
+  font-size: 13px !important;
+  line-height: 1.25 !important;
+}
+#erp-modern-shell .erp-brand-copy small {
+  font-size: 11px !important;
+}
+#erp-modern-shell .erp-primary-nav {
+  height: 42px !important;
+}
+#erp-modern-shell .erp-primary-nav a {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  padding: 8px 14px !important;
+}
+#erp-modern-shell .erp-workspace-heading h2 {
+  font-size: 17px !important;
+}
+#erp-modern-shell .erp-workspace-heading p {
+  font-size: 12.5px !important;
+}
+#erp-modern-shell .erp-workspace-open,
+#erp-modern-shell .erp-admission-print {
+  font-size: 13.5px !important;
+  font-weight: 650 !important;
+  padding: 10px 14px !important;
+  min-height: 40px !important;
+}
+#erp-modern-shell .erp-fee-quick-form label {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+}
+#erp-modern-shell .erp-fee-quick-form input {
+  height: 44px !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+}
+#erp-modern-shell .erp-fee-quick-form button[type="submit"] {
+  height: 44px !important;
+  font-size: 14.5px !important;
+  font-weight: 700 !important;
+}
+#erp-modern-shell .erp-fee-summary-head strong {
+  font-size: 14px !important;
+}
+#erp-modern-shell .erp-fee-summary dt {
+  font-size: 11px !important;
+}
+#erp-modern-shell .erp-fee-summary dd {
+  font-size: 13.5px !important;
+}
+
+/* Student Record Custom Grid (Issue 7) */
+.erp-student-grid-custom {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+.erp-row-triple {
+  display: grid !important;
+  grid-template-columns: 1.1fr 1fr 1fr !important;
+  gap: 8px !important;
+  background: rgba(241, 245, 249, 0.7);
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+.erp-row-double {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
+  padding: 6px 4px;
+  border-bottom: 1px solid #edf2f7;
+}
+.erp-field-box {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.erp-label {
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: #64748b !important;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.erp-val {
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  color: #1e293b !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.erp-val-scholar {
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  color: #2563eb !important;
+}
+.erp-student-name {
+  font-size: 17px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+}
+.erp-phone-link {
+  color: #2563eb !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  text-decoration: underline !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  padding: 2px 0;
+}
+.erp-phone-link:active {
+  color: #1d4ed8 !important;
+}
+
+/* Dark mode overrides */
+#erp-modern-shell[data-theme="dark"] .erp-row-triple {
+  background: #18181b !important;
+  border-color: #27272a !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-row-double {
+  border-color: #27272a !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-val {
+  color: #f4f4f5 !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-val-scholar {
+  color: #60a5fa !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-student-name {
+  color: #ffffff !important;
+}
+#erp-modern-shell[data-theme="dark"] .erp-label {
+  color: #a1a1aa !important;
+}
+#erp-modern-shell[data-theme="dark"] #erp-search-by {
+  border-right-color: #3f3f46 !important;
+  color: #e4e4e7 !important;
+}
+#erp-modern-shell[data-theme="dark"] #erp-student-search {
+  color: #ffffff !important;
+}
+
+
+/* =======================================================
+   USER / CLASS LEVEL PERMISSION RESTRICTIONS
+   ======================================================= */
+[data-user-role="user"] .erp-primary-nav a:not([data-route="dashboard"]):not([data-route="report"]),
+[data-user-role="class"] .erp-primary-nav a:not([data-route="dashboard"]):not([data-route="report"]),
+[data-user-role="user"] .erp-more-button,
+[data-user-role="class"] .erp-more-button,
+[data-user-role="user"] .erp-more-panel,
+[data-user-role="class"] .erp-more-panel,
+[data-user-role="user"] .erp-admission-print,
+[data-user-role="class"] .erp-admission-print,
+[data-user-role="user"] [data-action*="print"],
+[data-user-role="class"] [data-action*="print"],
+[data-user-role="user"] [data-action="admission-print"],
+[data-user-role="class"] [data-action="admission-print"],
+[data-user-role="user"] [data-action="enrollment-print"],
+[data-user-role="class"] [data-action="enrollment-print"],
+[data-user-role="user"] [data-action="tc-print"],
+[data-user-role="class"] [data-action="tc-print"],
+[data-user-role="user"] .erp-fee-quick-form,
+[data-user-role="class"] .erp-fee-quick-form,
+[data-user-role="user"] .erp-fee-card .erp-workspace-footer,
+[data-user-role="class"] .erp-fee-card .erp-workspace-footer,
+[data-user-role="user"] .erp-dashboard-source,
+[data-user-role="class"] .erp-dashboard-source {
+  display: none !important;
+}
+
+/* =======================================================
+   STUDENT REPORT SHEET MODULE
+   ======================================================= */
+#erp-report-view[hidden],
+.erp-report-view[hidden],
+#erp-modern-shell .erp-report-view[hidden],
+#erp-modern-shell #erp-report-view[hidden] {
+  display: none !important;
+}
+
+.erp-report-view {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  height: calc(100dvh - 105px) !important;
+  height: calc(100vh - 105px) !important;
+  max-height: calc(100dvh - 105px) !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 4px 10px 4px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.erp-report-card {
+  background: #ffffff !important;
+  border: 1px solid var(--erp-line) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05) !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+  min-height: 0 !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-report-card {
+  background: #18181b !important;
+  border-color: #27272a !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4) !important;
+}
+
+.erp-report-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 8px 12px !important;
+  border-bottom: 1px solid var(--erp-line) !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+  flex-shrink: 0 !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-report-header {
+  border-bottom-color: #27272a !important;
+}
+
+.erp-report-heading {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+}
+
+.erp-report-title {
+  margin: 0 !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-report-title {
+  color: #ffffff !important;
+}
+
+.erp-report-count-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 4px 12px !important;
+  background: #eff6ff !important;
+  color: #1d4ed8 !important;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  border-radius: 20px !important;
+  border: 1px solid #bfdbfe !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-report-count-badge {
+  background: #1e3a8a !important;
+  color: #93c5fd !important;
+  border-color: #2563eb !important;
+}
+
+/* Class Selector Dropdown Menu */
+.erp-class-selector-section {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 6px 12px !important;
+  background: #f8fafc !important;
+  border-bottom: 1px solid var(--erp-line) !important;
+  overflow: visible !important;
+  flex-shrink: 0 !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-class-selector-section {
+  background: #141416 !important;
+  border-bottom-color: #27272a !important;
+}
+
+.erp-class-selector-label {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: var(--erp-ink) !important;
+  white-space: nowrap !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-class-selector-label {
+  color: #a1a1aa !important;
+}
+
+.erp-class-select-wrap {
+  position: relative !important;
+  flex: 1 !important;
+  max-width: 260px !important;
+}
+
+.erp-class-select {
+  width: 100% !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  padding: 0 32px 0 12px !important;
+  border-radius: 8px !important;
+  border: 1px solid #cbd5e1 !important;
+  background-color: #ffffff !important;
+  color: var(--erp-ink) !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 12px center !important;
+  box-sizing: border-box !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-class-select {
+  background-color: #18181b !important;
+  border-color: #27272a !important;
+  color: #f4f4f5 !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") !important;
+}
+
+/* Report Toolbar (Search + Refresh) */
+.erp-report-toolbar {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 6px 12px !important;
+  background: #ffffff !important;
+  border-bottom: 1px solid var(--erp-line) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-report-toolbar {
+  background: #18181b !important;
+  border-bottom-color: #27272a !important;
+}
+
+.erp-report-search-wrap {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+  height: 40px !important;
+}
+
+.erp-report-search-wrap .erp-search-icon {
+  position: absolute !important;
+  left: 12px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  font-size: 16px !important;
+  color: #94a3b8 !important;
+  pointer-events: none !important;
+  line-height: 1 !important;
+  z-index: 2 !important;
+}
+
+.erp-sheet-search {
+  width: 100% !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  padding: 0 12px 0 38px !important; /* 38px avoids icon overlap */
+  font-size: 13px !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 8px !important;
+  background: #f8fafc !important;
+  color: #0f172a !important;
+  outline: none !important;
+  text-overflow: ellipsis !important;
+  box-sizing: border-box !important;
+  transition: all 0.15s ease !important;
+}
+
+.erp-sheet-search:focus {
+  border-color: #2563eb !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-sheet-search {
+  background: #27272a !important;
+  border-color: #3f3f46 !important;
+  color: #ffffff !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-sheet-search:focus {
+  border-color: #3b82f6 !important;
+  background: #18181b !important;
+}
+
+.erp-sheet-refresh-btn {
+  flex-shrink: 0 !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  padding: 0 16px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 8px !important;
+  background: #f8fafc !important;
+  color: #334155 !important;
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+}
+
+.erp-sheet-refresh-btn:active {
+  background: #f1f5f9 !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-sheet-refresh-btn {
+  background: #27272a !important;
+  border-color: #3f3f46 !important;
+  color: #e4e4e7 !important;
+}
+
+/* Scrollable Table Sheet pinned to viewport bottom */
+.erp-report-table-container {
+  position: relative !important;
+  flex: 1 !important;
+  min-height: 0 !important;
+  height: 100% !important;
+  max-height: none !important;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  border-radius: 0 0 12px 12px !important;
+}
+
+.erp-student-sheet-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+  text-align: left;
+  min-width: 950px;
+}
+
+.erp-student-sheet-table th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 10px 12px;
+  border-bottom: 2px solid #cbd5e1;
+  border-right: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-student-sheet-table th {
+  background: #27272a;
+  color: #e4e4e7;
+  border-bottom-color: #3f3f46;
+  border-right-color: #3f3f46;
+}
+
+.erp-student-sheet-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid #e2e8f0;
+  border-right: 1px solid #f1f5f9;
+  color: #1e293b;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-student-sheet-table td {
+  border-bottom-color: #27272a;
+  border-right-color: #27272a;
+  color: #d4d4d8;
+}
+
+.erp-student-sheet-table tbody tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-student-sheet-table tbody tr:nth-child(even) {
+  background: #1c1c20;
+}
+
+.erp-student-sheet-table tbody tr:hover {
+  background: #f0f7ff;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-student-sheet-table tbody tr:hover {
+  background: #242731;
+}
+
+/* Row Highlight (when clicked, preserves track during horizontal scroll) */
+.erp-student-sheet-table tbody tr.erp-row-highlighted,
+.erp-student-sheet-table tbody tr.erp-row-highlighted:nth-child(even) {
+  background: #fef3c7 !important;
+}
+
+.erp-student-sheet-table tbody tr.erp-row-highlighted td {
+  border-bottom-color: #fde68a !important;
+  color: #78350f !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-student-sheet-table tbody tr.erp-row-highlighted,
+#erp-modern-shell[data-theme="dark"] .erp-student-sheet-table tbody tr.erp-row-highlighted:nth-child(even) {
+  background: #78350f !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-student-sheet-table tbody tr.erp-row-highlighted td {
+  border-bottom-color: #92400e !important;
+  color: #fef3c7 !important;
+}
+
+.erp-td-adm {
+  font-weight: 800;
+  color: #2563eb !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-td-adm {
+  color: #60a5fa !important;
+}
+
+.erp-td-name {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-td-name {
+  color: #ffffff;
+}
+
+.erp-cat-badge {
+  display: inline-block;
+  padding: 2px 7px;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 4px;
+  background: #e2e8f0;
+  color: #334155;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-cat-badge {
+  background: #3f3f46;
+  color: #f4f4f5;
+}
+
+.erp-report-loading,
+.erp-report-error,
+.erp-report-empty,
+.erp-report-no-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  gap: 12px;
+  text-align: center;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.erp-report-spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid #e2e8f0;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: erp-spin 0.8s linear infinite;
+}
+
+@keyframes erp-spin {
+  to { transform: rotate(360deg); }
+}
+
+.erp-btn-retry {
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 6px;
+  border: none;
+  background: #2563eb;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* =======================================================
+   STUDENT EDIT FORM REDESIGN
+   ======================================================= */
+[data-page="edit"] .erp-legacy-fields-hidden,
+[data-page="edit"] form.erp-form-modernized > table,
+[data-page="edit"] form.erp-form-modernized > .row,
+[data-page="edit"] form.erp-form-modernized > div:not(.erp-modern-edit-container):not(.erp-legacy-fields-hidden),
+[data-page="edit"] form.erp-sedit-form > table,
+[data-page="edit"] #main-content .content-box-header,
+[data-page="edit"] #main-content #savedImages,
+[data-page="edit"] #main-content video,
+[data-page="edit"] #main-content canvas {
+  display: none !important;
+}
+
+/* Student Search & Edit Page Layout */
+.erp-sedit-container {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  width: 100% !important;
+  max-width: 900px !important;
+  margin: 12px auto 24px !important;
+  box-sizing: border-box !important;
+}
+
+.erp-sedit-card {
+  background: #ffffff !important;
+  border: 1px solid var(--erp-line) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04) !important;
+  overflow: visible !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-sedit-card {
+  background: #18181b !important;
+  border-color: #27272a !important;
+}
+
+.erp-sedit-card-body {
+  padding: 18px !important;
+  overflow: visible !important;
+}
+
+.erp-sedit-row {
+  display: grid !important;
+  grid-template-columns: 190px 1fr !important;
+  gap: 14px !important;
+  align-items: flex-start !important;
+  overflow: visible !important;
+}
+
+@media (max-width: 640px) {
+  .erp-sedit-row {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.erp-sedit-field {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  min-width: 0 !important;
+  position: relative !important;
+}
+
+.erp-sedit-field select,
+.erp-sedit-field input[type="text"] {
+  width: 100% !important;
+  min-height: 44px !important;
+  padding: 8px 12px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #0f172a !important;
+  background: #f8fafc !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 8px !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  transition: all 0.15s ease !important;
+}
+
+.erp-sedit-field select:focus,
+.erp-sedit-field input[type="text"]:focus {
+  border-color: #2563eb !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-sedit-field select,
+#erp-modern-shell[data-theme="dark"] .erp-sedit-field input[type="text"] {
+  background: #27272a !important;
+  border-color: #3f3f46 !important;
+  color: #ffffff !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-sedit-field select:focus,
+#erp-modern-shell[data-theme="dark"] .erp-sedit-field input[type="text"]:focus {
+  border-color: #3b82f6 !important;
+  background: #18181b !important;
+}
+
+#layer1 {
+  position: relative !important;
+  width: 100% !important;
+  z-index: 9999 !important;
+}
+
+#search_suggest {
+  position: absolute !important;
+  top: 4px !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-height: 280px !important;
+  overflow-y: auto !important;
+  background: #ffffff !important;
+  border: 1.5px solid #2563eb !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.18) !important;
+  z-index: 9999 !important;
+}
+
+#erp-modern-shell[data-theme="dark"] #search_suggest {
+  background: #18181b !important;
+  border-color: #3b82f6 !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6) !important;
+}
+
+.suggest_link {
+  padding: 10px 14px !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  color: #0f172a !important;
+  background: #ffffff !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  cursor: pointer !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .suggest_link {
+  background: #18181b !important;
+  color: #f4f4f5 !important;
+  border-bottom-color: #27272a !important;
+}
+
+.suggest_link_over {
+  padding: 10px 14px !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  background: #2563eb !important;
+  color: #ffffff !important;
+  cursor: pointer !important;
+}
+
+.erp-sedit-primary-banner {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  padding: 14px 18px !important;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb) !important;
+  color: #ffffff !important;
+  border-radius: 12px !important;
+  margin: 16px 0 !important;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25) !important;
+}
+
+.erp-sedit-banner-info h4 {
+  margin: 0 !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+}
+
+.erp-sedit-banner-info p {
+  margin: 3px 0 0 !important;
+  font-size: 12px !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.erp-sedit-open-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 10px 20px !important;
+  background: #ffffff !important;
+  color: #1e3a8a !important;
+  font-size: 13.5px !important;
+  font-weight: 800 !important;
+  border-radius: 999px !important;
+  text-decoration: none !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  white-space: nowrap !important;
+  transition: transform 0.15s ease !important;
+}
+
+.erp-sedit-open-btn:active {
+  transform: scale(0.96) !important;
+}
+
+#getstudet span.tagb2 {
+  display: inline-block !important;
+  margin: 3px 4px !important;
+  border-radius: 6px !important;
+  overflow: hidden !important;
+}
+
+#getstudet span.tagb2 a {
+  display: inline-block !important;
+  padding: 6px 12px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+#getstudet table.k,
+#getstudet table.k1 {
+  width: 100% !important;
+  background: #ffffff !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  margin: 10px 0 !important;
+}
+
+#erp-modern-shell[data-theme="dark"] #getstudet table.k,
+#erp-modern-shell[data-theme="dark"] #getstudet table.k1 {
+  background: #18181b !important;
+  color: #e4e4e7 !important;
+}
+
+[data-page="edit"] .erp-action-area > form {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+}
+
+[data-page="edit"] .erp-main {
+  padding-bottom: 90px !important;
+}
+
+.erp-modern-edit-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 900px;
+  margin: 12px auto 24px !important;
+  box-sizing: border-box;
+}
+
+.erp-edit-page-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+}
+
+.erp-edit-banner-text h2 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.erp-edit-banner-text p {
+  margin: 3px 0 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.erp-edit-role-badge {
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.erp-edit-card {
+  background: #ffffff;
+  border: 1px solid var(--erp-line);
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+  overflow: hidden;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-edit-card {
+  background: #18181b;
+  border-color: #27272a;
+}
+
+.erp-edit-card-header {
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--erp-line);
+  background: #f8fafc;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-edit-card-header {
+  background: #141416;
+  border-bottom-color: #27272a;
+}
+
+.erp-edit-card-header h3 {
+  margin: 0;
+  font-size: 14.5px;
+  font-weight: 800;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-edit-card-header h3 {
+  color: #ffffff;
+}
+
+.erp-edit-card-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+  padding: 16px 18px;
+}
+
+.erp-edit-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.erp-edit-field-group .erp-field-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-edit-field-group .erp-field-label {
+  color: #a1a1aa;
+}
+
+.erp-req-star {
+  color: #ef4444;
+  margin-left: 2px;
+}
+
+.erp-input-action-pill {
+  font-size: 11px;
+  padding: 1px 8px;
+  background: #eff6ff;
+  color: #2563eb;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.erp-edit-field-group input,
+.erp-edit-field-group select,
+.erp-edit-field-group textarea {
+  width: 100% !important;
+  min-height: 40px !important;
+  padding: 8px 12px !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  color: #0f172a !important;
+  background: #f8fafc !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 8px !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  transition: all 0.15s ease !important;
+}
+
+.erp-edit-field-group input:focus,
+.erp-edit-field-group select:focus,
+.erp-edit-field-group textarea:focus {
+  border-color: #2563eb !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15) !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-edit-field-group input,
+#erp-modern-shell[data-theme="dark"] .erp-edit-field-group select,
+#erp-modern-shell[data-theme="dark"] .erp-edit-field-group textarea {
+  background: #27272a !important;
+  border-color: #3f3f46 !important;
+  color: #ffffff !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-edit-field-group input:focus,
+#erp-modern-shell[data-theme="dark"] .erp-edit-field-group select:focus,
+#erp-modern-shell[data-theme="dark"] .erp-edit-field-group textarea:focus {
+  border-color: #3b82f6 !important;
+  background: #18181b !important;
+}
+
+/* Photo Upload Box */
+.erp-photo-field-group {
+  grid-column: 1 / -1;
+}
+
+.erp-photo-upload-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  background: #f1f5f9;
+  border-radius: 10px;
+  border: 1px dashed #cbd5e1;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-photo-upload-box {
+  background: #27272a;
+  border-color: #3f3f46;
+}
+
+.erp-photo-avatar-wrapper {
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 2px solid #2563eb;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.erp-photo-avatar-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.erp-photo-action-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.erp-photo-hint {
+  margin: 0;
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-photo-hint {
+  color: #a1a1aa;
+}
+
+.erp-photo-upload-btn {
+  align-self: flex-start;
+  padding: 7px 14px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 12.5px;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+/* Admin Actions Grid on Dashboard */
+.erp-admin-actions-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 8px !important;
+  margin-top: 14px !important;
+  padding-top: 12px !important;
+  border-top: 1px solid var(--erp-line) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.erp-admin-actions-grid .erp-action-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 42px !important;
+  padding: 0 10px !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  border: 1px solid var(--erp-line) !important;
+  background: #f8fafc !important;
+  color: var(--erp-ink) !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  box-sizing: border-box !important;
+  text-align: center !important;
+}
+
+.erp-admin-actions-grid .erp-btn-edit {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+
+/* Student Workspace Footer Action Buttons (User and Class levels) */
+#erp-modern-shell .erp-workspace-footer .erp-action-btn,
+#erp-modern-shell .erp-workspace-footer .erp-btn-edit {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 40px !important;
+  padding: 0 18px !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  font-weight: 750 !important;
+  text-decoration: none !important;
+  border: 1.5px solid #94a3b8 !important;
+  background: #f1f5f9 !important;
+  color: #000000 !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  box-sizing: border-box !important;
+  text-align: center !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+#erp-modern-shell .erp-workspace-footer .erp-action-btn:hover,
+#erp-modern-shell .erp-workspace-footer .erp-btn-edit:hover {
+  background: #e2e8f0 !important;
+  border-color: #64748b !important;
+  color: #000000 !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-workspace-footer .erp-action-btn,
+#erp-modern-shell[data-theme="dark"] .erp-workspace-footer .erp-btn-edit {
+  background: #1e293b !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+
+#erp-modern-shell .erp-workspace-footer .erp-action-btn:disabled,
+#erp-modern-shell .erp-workspace-footer .erp-action-btn[aria-disabled="true"],
+#erp-modern-shell .erp-workspace-footer .erp-btn-edit[aria-disabled="true"] {
+  opacity: 0.45 !important;
+  pointer-events: none !important;
+}
+
+.erp-admin-actions-grid .erp-action-btn:disabled,
+.erp-admin-actions-grid .erp-action-btn[aria-disabled="true"] {
+  opacity: 0.45 !important;
+  pointer-events: none !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-admin-actions-grid .erp-action-btn {
+  background: #27272a !important;
+  border-color: #3f3f46 !important;
+  color: #f4f4f5 !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-admin-actions-grid .erp-btn-edit {
+  background: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+  color: #ffffff !important;
+}
+
+/* Student Edit Empty Search State */
+.erp-edit-empty-state {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 48px 24px !important;
+  text-align: center !important;
+  background: #ffffff !important;
+  border: 1px dashed var(--erp-line) !important;
+  border-radius: 14px !important;
+  margin: 16px 0 !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-edit-empty-state {
+  background: #18181b !important;
+  border-color: #27272a !important;
+}
+
+.erp-edit-empty-icon {
+  font-size: 32px !important;
+  color: var(--erp-blue) !important;
+  margin-bottom: 12px !important;
+}
+
+.erp-edit-empty-state h3 {
+  margin: 0 0 6px !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  color: var(--erp-ink) !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-edit-empty-state h3 {
+  color: #ffffff !important;
+}
+
+.erp-edit-empty-state p {
+  margin: 0 !important;
+  font-size: 13px !important;
+  color: var(--erp-muted) !important;
+  max-width: 380px !important;
+  line-height: 1.4 !important;
+}
+
+/* Floating Submit Button */
+.erp-floating-submit-bar {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 20px !important;
+  z-index: 2147483647 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.erp-floating-submit-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  min-height: 46px !important;
+  padding: 0 24px !important;
+  background: #2563eb !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  border: none !important;
+  border-radius: 999px !important;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.45) !important;
+  cursor: pointer !important;
+  letter-spacing: 0.02em !important;
+  transition: all 0.15s ease !important;
+}
+
+.erp-floating-submit-btn:active {
+  transform: scale(0.96) !important;
+  background: #1d4ed8 !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-floating-submit-btn {
+  background: #3b82f6 !important;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4) !important;
+}
+
+/* Eliminate bottom page gap on dashboard and edit */
+#erp-modern-shell .erp-main {
+  width: min(1420px, calc(100% - 32px)) !important;
+  margin: 0 auto !important;
+  padding: 16px 0 16px !important;
+  min-height: 0 !important;
+}
+
+[data-page="dashboard"][data-user-role="user"] .erp-main,
+[data-page="dashboard"][data-user-role="class"] .erp-main {
+  padding: 8px 0 16px !important;
+  min-height: 0 !important;
+}
+
+[data-page="dashboard"][data-user-role="user"] .erp-page-heading,
+[data-page="dashboard"][data-user-role="class"] .erp-page-heading,
+[data-page="dashboard"][data-user-role="user"] .erp-source-content,
+[data-page="dashboard"][data-user-role="class"] .erp-source-content,
+[data-page="dashboard"][data-user-role="user"] .erp-dashboard-source,
+[data-page="dashboard"][data-user-role="class"] .erp-dashboard-source {
+  display: none !important;
+}
+
+.erp-edit-loading-spinner {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  border: 3px solid rgba(37, 99, 235, 0.2) !important;
+  border-top-color: #2563eb !important;
+  animation: erp-spin 0.8s linear infinite !important;
+  margin-bottom: 14px !important;
+}
+
+@keyframes erp-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Admin dashboard original ERP source info accordion */
+[data-user-role="admin"] .erp-dashboard-source {
+  display: block !important;
+  margin-top: 18px !important;
+  border: 1px solid var(--erp-line) !important;
+  border-radius: 8px !important;
+  background: #ffffff !important;
+}
+[data-user-role="admin"] .erp-dashboard-source > summary {
+  display: list-item !important;
+  padding: 12px 16px !important;
+  font-weight: 700 !important;
+  color: var(--erp-ink) !important;
+  cursor: pointer !important;
+  user-select: none !important;
+}
+#erp-modern-shell[data-theme="dark"] [data-user-role="admin"] .erp-dashboard-source {
+  background: #18181b !important;
+  border-color: #27272a !important;
+}
+
+/* User & Class modes do NOT show original dashboard accordion */
+[data-user-role="user"] .erp-dashboard-source,
+[data-user-role="class"] .erp-dashboard-source {
+  display: none !important;
+}
+
+/* =======================================================
+   CLASS FEE STATEMENT MODULE
+   ======================================================= */
+#erp-fee-view[hidden],
+.erp-fee-view[hidden],
+#erp-modern-shell .erp-fee-view[hidden],
+#erp-modern-shell #erp-fee-view[hidden] {
+  display: none !important;
+}
+
+.erp-fee-view {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  height: calc(100dvh - 105px) !important;
+  max-height: calc(100dvh - 105px) !important;
+  overflow: hidden !important;
+  padding: 8px 12px 12px !important;
+  box-sizing: border-box !important;
+}
+
+.erp-fee-card-sheet {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  border-radius: 14px !important;
+  border: 1px solid var(--erp-line) !important;
+  background: #ffffff !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+  overflow: hidden !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-fee-card-sheet {
+  background: #101012 !important;
+  border-color: #27272a !important;
+}
+
+.erp-fee-title {
+  font-size: 17px !important;
+  font-weight: 800 !important;
+  color: var(--erp-ink) !important;
+  margin: 2px 0 0 !important;
+}
+
+.erp-fee-table-container {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  height: auto !important;
+  overflow-y: auto !important;
+  overflow-x: auto !important;
+  border-top: 1px solid var(--erp-line) !important;
+  position: relative !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+.erp-fee-sheet-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  font-size: 13px !important;
+  min-width: 1080px !important;
+}
+
+.erp-fee-sheet-table thead th {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+  background: #f8fafc !important;
+  padding: 10px 12px !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: none !important;
+  color: var(--erp-muted) !important;
+  border-bottom: 2px solid var(--erp-line) !important;
+  white-space: nowrap !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-fee-sheet-table thead th {
+  background: #18181b !important;
+  border-bottom-color: #27272a !important;
+}
+
+.erp-fee-sheet-table tbody td {
+  padding: 9px 12px !important;
+  border-bottom: 1px solid var(--erp-line) !important;
+  color: var(--erp-ink) !important;
+  vertical-align: middle !important;
+}
+
+.erp-due-pill-unpaid {
+  display: inline-block !important;
+  padding: 3px 8px !important;
+  border-radius: 6px !important;
+  background: rgba(239, 68, 68, 0.12) !important;
+  color: #dc2626 !important;
+  font-weight: 800 !important;
+  font-size: 12px !important;
+}
+
+.erp-due-pill-paid {
+  display: inline-block !important;
+  padding: 3px 8px !important;
+  border-radius: 6px !important;
+  background: rgba(34, 197, 94, 0.12) !important;
+  color: #16a34a !important;
+  font-weight: 800 !important;
+  font-size: 12px !important;
+}
+
+.erp-inst-pill-due {
+  display: inline-block !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  background: rgba(234, 88, 12, 0.1) !important;
+  color: #ea580c !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+}
+
+.erp-inst-pill-paid {
+  display: inline-block !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  background: rgba(34, 197, 94, 0.1) !important;
+  color: #16a34a !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-inst-pill-due {
+  background: rgba(249, 115, 22, 0.2) !important;
+  color: #fb923c !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-inst-pill-paid {
+  background: rgba(34, 197, 94, 0.2) !important;
+  color: #4ade80 !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-due-pill-unpaid {
+  background: rgba(239, 68, 68, 0.25) !important;
+  color: #f87171 !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-due-pill-paid {
+  background: rgba(34, 197, 94, 0.25) !important;
+  color: #4ade80 !important;
+}
+
+.erp-fee-total-row {
+  position: sticky !important;
+  bottom: 0 !important;
+  background: #f1f5f9 !important;
+  border-top: 2px solid #cbd5e1 !important;
+  font-size: 13px !important;
+  z-index: 9 !important;
+}
+
+.erp-fee-total-row td {
+  padding: 10px 12px !important;
+  border-top: 2px solid var(--erp-line) !important;
+  color: var(--erp-ink) !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-fee-total-row {
+  background: #18181b !important;
+  border-top-color: #3f3f46 !important;
+}
+
+/* Father Phone Call Link in Fee Sheet */
+.erp-father-phone-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  color: #1d4ed8 !important;
+  font-weight: 650 !important;
+  text-decoration: none !important;
+  padding: 2px 7px !important;
+  border-radius: 6px !important;
+  background: rgba(37, 99, 235, 0.08) !important;
+  border: 1px solid rgba(37, 99, 235, 0.2) !important;
+  transition: all 0.15s ease !important;
+}
+
+.erp-father-phone-link:hover,
+.erp-father-phone-link:active {
+  background: rgba(37, 99, 235, 0.18) !important;
+  border-color: rgba(37, 99, 235, 0.4) !important;
+  color: #1e40af !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-father-phone-link {
+  color: #93c5fd !important;
+  background: rgba(59, 130, 246, 0.18) !important;
+  border-color: rgba(59, 130, 246, 0.35) !important;
+}
+
+.erp-phone-dial-icon {
+  font-size: 11px !important;
+}
+
+/* Fee toolbar & sorting controls */
+.erp-fee-toolbar {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 14px !important;
+  flex-wrap: wrap !important;
+}
+
+.erp-fee-toolbar .erp-report-search-wrap {
+  flex: 1 1 160px !important;
+  min-width: 140px !important;
+}
+
+.erp-fee-sort-wrap {
+  flex: 0 0 auto !important;
+}
+
+.erp-fee-sort-select {
+  height: 38px !important;
+  padding: 0 10px !important;
+  border-radius: 8px !important;
+  border: 1.5px solid var(--erp-line) !important;
+  background: #ffffff !important;
+  color: var(--erp-ink) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  outline: none !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-fee-sort-select {
+  background: #18181b !important;
+  border-color: #27272a !important;
+  color: #f4f4f5 !important;
+}
+
+.erp-th-sortable {
+  cursor: pointer !important;
+  user-select: none !important;
+}
+
+.erp-th-sortable:hover {
+  background: #f1f5f9 !important;
+}
+
+#erp-modern-shell[data-theme="dark"] .erp-th-sortable:hover {
+  background: #27272a !important;
+}
+
+.erp-sort-icon {
+  display: inline-block !important;
+  font-size: 10px !important;
+  margin-left: 3px !important;
+  opacity: 0.5 !important;
+}
+
+.erp-sort-icon.active {
+  opacity: 1 !important;
+  color: var(--erp-blue) !important;
+}
+
+[data-page="dashboard"][data-user-role="user"] .erp-source-content,
+[data-page="dashboard"][data-user-role="class"] .erp-source-content {
+  display: none !important;
+}
+
+html.erp-modern-active #main-content {
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+/* Ensure no element causes horizontal overflow on body/html */
+html.erp-modern-active,
+html.erp-modern-active body {
+  overflow-x: hidden !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+}
+
+

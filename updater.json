@@ -1,18 +1,18 @@
 {
-  "version": 2,
-  "versionName": "1.0.2",
+  "version": 3,
+  "versionName": "1.0.3",
   "releaseDate": "2026-10-28",
-  "description": "Popup test: yooo Its working buddy",
+  "description": "Popup test v3: yooo Its working buddy",
   "files": [
     {
       "path": "js/bundle.js",
       "url": "js/bundle.js",
-      "sha256": "1ee3d2a33dbf07632242bda2ef81591839643f7fbe248a2024a058f6132d6f27"
+      "sha256": "ed12403c7232bd6fc68f94be55e247187df0698f14466d34d368c416dfb3dbb4"
     },
     {
       "path": "css/shell.css",
       "url": "css/shell.css",
-      "sha256": "3a270efb208d736d9f178bf29f574d525a9e88af82896712b64f68807cd10b29"
+      "sha256": "b68c0a5f0e7e057366358e2e46729cfadcd80c8115b2d9f69195a8c5f556591c"
     }
   ],
   "apk": {

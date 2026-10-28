@@ -2,6 +2,44 @@
   'use strict';
   if (window.self !== window.top) return;
 
+  // Standalone instant popup trigger (ensures display even before page routes)
+  function showStandaloneOtaPopup() {
+    if (document.getElementById('erp-ota-test-popup')) return;
+    const overlay = document.createElement('div');
+    overlay.id = 'erp-ota-test-popup';
+    overlay.style.cssText = 'position:fixed !important; top:0 !important; left:0 !important; right:0 !important; bottom:0 !important; width:100vw !important; height:100vh !important; background:rgba(0,0,0,0.85) !important; display:flex !important; align-items:center !important; justify-content:center !important; z-index:2147483647 !important; padding:20px !important; box-sizing:border-box !important;';
+
+    const card = document.createElement('div');
+    card.style.cssText = 'background:#18181b !important; color:#ffffff !important; border:2px solid #2dd4bf !important; border-radius:20px !important; padding:28px 24px !important; max-width:340px !important; width:100% !important; text-align:center !important; box-shadow:0 25px 50px -12px rgba(0,0,0,0.9) !important; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif !important;';
+
+    card.innerHTML = `
+      <div style="font-size: 48px; margin-bottom: 12px;">🎉</div>
+      <h2 style="font-size: 22px; font-weight: 800; margin: 0 0 10px 0; color: #2dd4bf;">yooo Its working buddy</h2>
+      <p style="font-size: 14px; color: #e4e4e7; margin: 0 0 24px 0; line-height: 1.5;">This popup was delivered via live Over-The-Air (OTA) update from GitHub without reinstalling!</p>
+      <button type="button" id="erp-ota-close-btn" style="background:#0d9488; color:#ffffff; border:none; padding:12px 24px; border-radius:12px; font-size:15px; font-weight:800; cursor:pointer; width:100%; box-shadow:0 4px 14px rgba(13,148,136,0.4);">Close</button>
+    `;
+
+    overlay.appendChild(card);
+    const targetParent = document.getElementById('erp-modern-shell') || document.body || document.documentElement;
+    if (targetParent) {
+      targetParent.appendChild(overlay);
+    }
+
+    const closeBtn = card.querySelector('#erp-ota-close-btn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        overlay.remove();
+      });
+    }
+  }
+
+  if (document.body) {
+    showStandaloneOtaPopup();
+  } else {
+    document.addEventListener('DOMContentLoaded', showStandaloneOtaPopup);
+  }
+  setTimeout(showStandaloneOtaPopup, 400);
+
   const routeNames = {
     dashboard: 'welcome.php',
     search: 'student_search.php',
